@@ -194,11 +194,14 @@ async function checkSshCommand(server, svc) {
 
 async function checkDockerContainer(server, svc) {
   const name = svc.container || svc.name;
-  const fmt = "{{.Names}}|{{.Status}}|{{.Running}}";
-  const cmd = `docker ps --format '${fmt}' --filter name=${name}`;
+  const fmt = "{{.Names}}|{{.Status}}";
+  // Use exact match for container name with regex anchors ^ and $
+  // Also, use absolute path to docker executable to avoid PATH issues
+  const cmd = `/usr/bin/docker ps --format '${fmt}' --filter name=^${name}$`;
   const { stdout, stderr } = await sshExec({ ssh: server.ssh, command: cmd, timeoutMs: svc.timeoutMs || 4000 });
-  const line = stdout.split(/\r?\n/).find((l) => l.includes(name)) || '';
-  const ok = line.includes('Up') || /true\b/.test(line);
+  // The filter should return one line or nothing.
+  const line = stdout.trim();
+  const ok = line.toLowerCase().includes('up');
   const detail = line || (stderr.trim() || 'not found');
   return { ok, detail: detail.slice(0, 256) };
 }
@@ -228,7 +231,12 @@ async function pollOnce() {
       const perServices = {};
       await Promise.all((server.services || []).map(async (svc) => {
         const res = await runServiceCheck(server, svc);
-        perServices[svc.id] = { name: svc.name, type: svc.type, ok: res.ok, detail: res.detail };
+        const serviceData = { name: svc.name, type: svc.type, ok: res.ok, detail: res.detail };
+        // Pass url to frontend for applicable service types
+        if (svc.url && (svc.type === 'http' || svc.type === 'httpJson')) {
+          serviceData.url = svc.url;
+        }
+        perServices[svc.id] = serviceData;
       }));
       const oks = Object.values(perServices).map((s) => s.ok);
       const color = oks.length === 0 ? 'gray' : oks.every(Boolean) ? 'green' : oks.some(Boolean) ? 'yellow' : 'red';

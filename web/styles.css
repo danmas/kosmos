@@ -18,6 +18,7 @@ body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Arial; backgro
 .tooltip.hidden { display:none; }
 .tooltip .title { font-weight:700; margin-bottom:6px; }
 .tooltip .line { font-size:13px; margin:2px 0; color:#d6defa; }
+.svc-link { text-decoration: none; margin-left: 4px; }
 
 .overlay { position:fixed; inset:0; background:rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:center; z-index:200; }
 .overlay.hidden { display:none; }

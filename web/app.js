@@ -59,12 +59,17 @@ function render(servers) {
       <div class="env">${s.env}</div>
       ${s.services
         .map(
-          (sv) => `
-        <div class="svc">
-          <div class="dot ${sv.ok ? 'ok' : 'fail'}"></div>
-          <div>${sv.name} <span style="opacity:.7">(${sv.type})</span></div>
-        </div>
-      `
+          (sv) => {
+            const link = (sv.url && (sv.type === 'http' || sv.type === 'httpJson'))
+              ? ` <a href="${sv.url}" target="_blank" class="svc-link" title="Открыть в новой вкладке" onclick="event.stopPropagation()">🔗</a>`
+              : '';
+            return `
+              <div class="svc">
+                <div class="dot ${sv.ok ? 'ok' : 'fail'}"></div>
+                <div>${sv.name} <span style="opacity:.7">(${sv.type})</span>${link}</div>
+              </div>
+            `;
+          }
         )
         .join('')}
     `;
