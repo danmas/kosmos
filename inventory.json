@@ -44,7 +44,10 @@
       "ssh": { "host": "usa", "port": 22, "user": "root", "credentialId": "cred-sample" },
       "services": [
         { "id": "aian-model", "type": "http", "name": "AIAN Model (3002)", "url": "http://usa:3002", "expectStatus": 200, "timeoutMs": 3000 },
-        { "id": "eng-teach", "type": "http", "name":"Eng Verbs (3000)", "url": "http://usa:3000", "expectStatus": 200, "timeoutMs": 3000 }
+        { "id": "aian-vector", "type": "http", "name": "AIAN Vector (3005)", "url": "http://usa:3005", "expectStatus": 200, "timeoutMs": 3000 },
+        { "id": "eng-teach", "type": "http", "name":"Eng Verbs (3000)", "url": "http://usa:3000", "expectStatus": 200, "timeoutMs": 3000 },
+        { "id": "searxng-docker", "type": "dockerContainer", "name": "searxng (doc)", "container": "searxng", "timeoutMs": 3000 },
+        { "id": "searxng-http", "type": "http", "name": "searxng (8080)", "url": "http://usa:8080/search?q=tes", "expectStatus": 200, "timeoutMs": 3000 }
       ]
     }
   ],
