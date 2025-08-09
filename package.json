@@ -1,0 +1,22 @@
+{
+  "name": "kosmos-panel",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Prototype: SSH-based server status panel (Node.js + vanilla JS)",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "ssh2": "^1.15.0",
+    "undici": "^6.19.8",
+    "ws": "^8.17.1",
+    "jsonpath-plus": "^10.3.0"
+  }
+}
+
+

@@ -1,0 +1,42 @@
+body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Arial; background: #0b0f1a; color: #e6ecff; }
+.topbar { display:flex; justify-content:space-between; padding:10px 16px; border-bottom:1px solid #1c2333; background:#0e1322; position:sticky; top:0; }
+.brand { font-weight:700; letter-spacing:0.5px; }
+.grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:12px; padding:16px; }
+.tile { background:#12182b; border:1px solid #1f2840; border-radius:10px; padding:12px; position:relative; cursor:pointer; }
+.tile .name { font-weight:600; margin-bottom:8px; }
+.tile .env { font-size:12px; color:#9fb0ff; }
+.tile .status { position:absolute; top:10px; right:10px; width:10px; height:10px; border-radius:50%; }
+.status.green { background:#22c55e; }
+.status.yellow { background:#f59e0b; }
+.status.red { background:#ef4444; }
+.status.gray { background:#64748b; }
+.svc { display:flex; align-items:center; gap:8px; margin-top:7px; }
+.svc .dot { width:8px; height:8px; border-radius:50%; }
+.dot.ok { background:#22c55e; }
+.dot.fail { background:#ef4444; }
+.tooltip { position:fixed; background:#10162a; border:1px solid #253055; border-radius:8px; padding:10px 12px; max-width:520px; z-index:100; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+.tooltip.hidden { display:none; }
+.tooltip .title { font-weight:700; margin-bottom:6px; }
+.tooltip .line { font-size:13px; margin:2px 0; color:#d6defa; }
+
+.overlay { position:fixed; inset:0; background:rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:center; z-index:200; }
+.overlay.hidden { display:none; }
+.overlay-content { width:80vw; max-width:1100px; height:70vh; background:#0d1426; border:1px solid #223055; border-radius:12px; display:flex; flex-direction:column; resize: both; overflow: hidden; min-width:480px; min-height:320px; max-width:95vw; max-height:90vh; }
+.overlay-top { display:flex; align-items:center; justify-content:space-between; padding:10px 12px; border-bottom:1px solid #223055; cursor:move; user-select:none; }
+.overlay-title { font-weight:700; }
+.overlay-body { flex:1; display:flex; flex-direction:column; min-height:0; }
+.terminal { flex:1; overflow:hidden; background:#000; padding:0; margin:0; }
+.terminal .xterm-viewport::-webkit-scrollbar { width: 10px; height: 10px; }
+.terminal .xterm-viewport::-webkit-scrollbar-thumb { background: #2a355c; border-radius: 6px; }
+
+/* Floating terminal windows (multi) */
+.win { position: fixed; top: 10vh; left: 10vw; width: 70vw; height: 60vh; background:#0d1426; border:1px solid #223055; border-radius:12px; display:flex; flex-direction:column; resize: both; overflow: hidden; min-width:420px; min-height:260px; z-index:300; box-shadow: 0 12px 28px rgba(0,0,0,0.45); }
+.win-header { display:flex; align-items:center; justify-content:space-between; padding:8px 10px; border-bottom:1px solid #223055; cursor:move; user-select:none; }
+.win-title { font-weight:700; }
+.win-body { flex:1; display:flex; flex-direction:column; min-height:0; }
+.win .terminal { flex:1; }
+/* убрано отдельное поле ввода, ввод идёт в xterm */
+.terminal-input { border-top:1px solid #223055; padding:8px; }
+.terminal-input input { width:100%; padding:8px 10px; background:#0b1222; border:1px solid #223055; border-radius:8px; color:#e6ecff; }
+
+

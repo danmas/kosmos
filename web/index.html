@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <title>Kosmos Panel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="https://unpkg.com/xterm/css/xterm.css" />
+    <script src="https://unpkg.com/xterm/lib/xterm.js"></script>
+    <script src="https://unpkg.com/xterm-addon-fit/lib/xterm-addon-fit.js"></script>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="brand">Kosmos</div>
+      <div class="ts" id="ts"></div>
+    </div>
+    <div id="grid" class="grid"></div>
+    <div id="tooltip" class="tooltip hidden"></div>
+
+    <div id="overlay" class="overlay hidden">
+      <div class="overlay-content">
+        <div class="overlay-top">
+          <div class="overlay-title" id="overlay-title"></div>
+          <button id="overlay-close">Закрыть</button>
+        </div>
+        <div class="overlay-body">
+          <div id="terminal" class="terminal"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+  </html>
+
+

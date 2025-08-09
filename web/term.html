@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <title>Terminal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://unpkg.com/xterm/css/xterm.css" />
+    <script src="https://unpkg.com/xterm/lib/xterm.js"></script>
+    <script src="https://unpkg.com/xterm-addon-fit/lib/xterm-addon-fit.js"></script>
+    <style>
+      html, body { height:100%; margin:0; background:#0b0f1a; color:#e6ecff; }
+      .wrap { height:100%; display:flex; flex-direction:column; }
+      .top { padding:8px 10px; background:#0e1322; border-bottom:1px solid #1c2333; display:flex; gap:8px; align-items:center; }
+      .title { font-weight:700; }
+      .term { flex:1; background:#000; }
+      .bar { padding:6px 10px; background:#0e1322; border-top:1px solid #1c2333; display:flex; gap:8px; }
+      button { background:#1b2544; border:1px solid #223055; color:#e6ecff; border-radius:8px; padding:6px 10px; cursor:pointer; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="top"><div class="title" id="t"></div><button id="close">Закрыть</button></div>
+      <div id="term" class="term"></div>
+      <div class="bar"><button id="fit">Подогнать</button></div>
+    </div>
+    <script>
+      const params = new URLSearchParams(location.search);
+      const mode = params.get('mode');
+      const serverId = params.get('serverId');
+      const path = params.get('path') || '';
+      const title = document.getElementById('t');
+      title.textContent = mode === 'tail' ? `tail ${path}` : `terminal (${serverId})`;
+      const termDiv = document.getElementById('term');
+      const term = new Terminal({ convertEol:true, cursorBlink:true, theme:{ background:'#000000', foreground:'#00ff00' } });
+      const fit = new window.FitAddon.FitAddon();
+      term.loadAddon(fit); term.open(termDiv); setTimeout(()=>{ try{fit.fit()}catch{} },0);
+      const wsProto = location.protocol === 'https:' ? 'wss' : 'ws';
+      const wsUrl = mode === 'tail'
+        ? `${wsProto}://${location.host}/ws/tail?serverId=${encodeURIComponent(serverId)}&path=${encodeURIComponent(path)}&lines=200`
+        : `${wsProto}://${location.host}/ws/terminal?serverId=${encodeURIComponent(serverId)}&cols=120&rows=30`;
+      const ws = new WebSocket(wsUrl);
+      term.writeln(mode === 'tail' ? `[tail ${path}]` : '[подключение к SSH...]');
+      ws.onopen = () => term.writeln('[соединение установлено]');
+      ws.onmessage = ev => { try { const m = JSON.parse(ev.data); if (m.type==='data'||m.type==='err') term.write(m.data); if (m.type==='fatal') term.writeln(`\r\n[FATAL] ${m.error}`); } catch {} };
+      ws.onclose = ev => term.writeln(`\r\n[соединение закрыто${ev.code ? ' код ' + ev.code : ''}]`);
+      if (mode !== 'tail') term.onData(d => { try { ws.send(JSON.stringify({ type:'data', data:d })); } catch {} });
+      document.getElementById('close').onclick = () => { try { ws.close(); } catch {}; window.close(); };
+      document.getElementById('fit').onclick = () => { try { fit.fit(); } catch {} };
+    </script>
+  </body>
+  </html>
+
+
