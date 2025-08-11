@@ -3,9 +3,9 @@
     {
       "id": "cred-sample",
       "type": "ssh-key",
-      "privateKeyPath": "C:/U1sers/roman/.ssh/id_ed25519",
+      "privateKeyPath": "C:/Users/your-username/.ssh/id_ed25519",
       "passphrase": null,
-      "password": "uiaait_5",
+      "password": null,
       "useAgent": false
     }
   ],
@@ -38,20 +38,16 @@
       ]
     },
     {
-      "id": "usa",
-      "name": "usa",
+      "id": "example-server",
+      "name": "Example Server",
       "env": "prod",
-      "ssh": { "host": "usa", "port": 22, "user": "root", "credentialId": "cred-sample" },
+      "ssh": { "host": "example.com", "port": 22, "user": "username", "credentialId": "cred-sample" },
       "services": [
-        { "id": "aian-model", "type": "http", "name": "AIAN Model (3002)", "url": "http://usa:3002", "expectStatus": 200, "timeoutMs": 3000 },
-        { "id": "aian-vector", "type": "http", "name": "AIAN Vector (3005)", "url": "http://usa:3005", "expectStatus": 200, "timeoutMs": 3000 },
-        { "id": "eng-teach", "type": "http", "name":"Eng Verbs (3000)", "url": "http://usa:3000", "expectStatus": 200, "timeoutMs": 3000 },
-        { "id": "searxng-docker", "type": "dockerContainer", "name": "searxng (doc)", "container": "searxng", "timeoutMs": 3000 },
-        { "id": "searxng-http", "type": "http", "name": "searxng (8080)", "url": "http://usa:8080/search?q=tes", "expectStatus": 200, "timeoutMs": 3000 }
+        { "id": "web-service", "type": "http", "name": "Web Service", "url": "http://example.com:3000", "expectStatus": 200, "timeoutMs": 3000 },
+        { "id": "api-service", "type": "http", "name": "API Service", "url": "http://example.com:3001", "expectStatus": 200, "timeoutMs": 3000 },
+        { "id": "docker-service", "type": "dockerContainer", "name": "Docker Service", "container": "service-name", "timeoutMs": 3000 }
       ]
     }
   ],
   "poll": { "intervalSec": 15, "concurrency": 6 }
 }
-
-

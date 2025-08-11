@@ -35,3 +35,6 @@ output_docs/
 # OS specific
 .DS_Store
 Thumbs.db 
+
+# Configuration files with private data
+inventory.json
