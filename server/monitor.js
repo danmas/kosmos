@@ -194,16 +194,46 @@ async function checkSshCommand(server, svc) {
 
 async function checkDockerContainer(server, svc) {
   const name = svc.container || svc.name;
-  const fmt = "{{.Names}}|{{.Status}}";
-  // Use exact match for container name with regex anchors ^ and $
-  // Also, use absolute path to docker executable to avoid PATH issues
-  const cmd = `/usr/bin/docker ps --format '${fmt}' --filter name=^${name}$`;
-  const { stdout, stderr } = await sshExec({ ssh: server.ssh, command: cmd, timeoutMs: svc.timeoutMs || 4000 });
-  // The filter should return one line or nothing.
-  const line = stdout.trim();
-  const ok = line.toLowerCase().includes('up');
-  const detail = line || (stderr.trim() || 'not found');
-  return { ok, detail: detail.slice(0, 256) };
+  const timeoutMs = svc.timeoutMs || 8000; // give docker more time by default
+
+  async function runOnce() {
+    // 1) Try fast path via `docker inspect` (more direct than `ps`)
+    let res;
+    try {
+      res = await sshExec({ ssh: server.ssh, command: `/usr/bin/docker inspect --type container --format '{{.State.Status}}' ${name}`, timeoutMs });
+      const status = (res.stdout || '').trim().toLowerCase();
+      if (res.code === 0 && status) {
+        const ok = status === 'running';
+        return { ok, detail: `inspect: ${status}` };
+      }
+    } catch (e) {
+      // fall through to ps on errors (including timeout handled by caller)
+      throw e;
+    }
+
+    // 2) Fallback to `docker ps` exact name match
+    const fmt = "{{.Names}}|{{.Status}}";
+    const cmd = `/usr/bin/docker ps --format '${fmt}' --filter status=running --filter name=^${name}$`;
+    const { stdout, stderr } = await sshExec({ ssh: server.ssh, command: cmd, timeoutMs });
+    const line = (stdout || '').trim();
+    const ok = line.toLowerCase().includes('up');
+    const detail = line || (stderr.trim() || 'not found');
+    return { ok, detail: detail.slice(0, 256) };
+  }
+
+  // Retry once on SSH timeout
+  try {
+    return await runOnce();
+  } catch (e) {
+    if (String(e && e.message || '').includes('timeout')) {
+      try {
+        return await runOnce();
+      } catch (e2) {
+        return { ok: false, detail: `check error after retry: ${e2.message}` };
+      }
+    }
+    return { ok: false, detail: `check error: ${e.message}` };
+  }
 }
 
 async function runServiceCheck(server, svc) {
