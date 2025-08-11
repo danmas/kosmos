@@ -1,3 +1,5 @@
+require('dotenv').config({ path: './.env' });
+
 const express = require('express');
 const http = require('http');
 const path = require('path');
@@ -38,10 +40,32 @@ app.get('/api/test-ssh', async (req, res) => {
     const serverId = String(req.query.serverId || '');
     const server = (inventory.servers || []).find((s) => s.id === serverId);
     if (!server) return res.status(404).json({ ok: false, error: 'server not found' });
+    
+    // Добавляем отладочную информацию
+    // getCredential не экспортируется, поэтому ловим только ошибки
+    const credInfo = {
+      envVars: {
+        SSH_KEY_PATH: process.env.SSH_KEY_PATH,
+        SSH_PASSPHRASE: process.env.SSH_PASSPHRASE,
+        SSH_PASSWORD: process.env.SSH_PASSWORD,
+        USE_SSH_AGENT: process.env.USE_SSH_AGENT,
+        SSH_AUTH_SOCK: process.env.SSH_AUTH_SOCK
+      }
+    };
+
     const r = await sshExec({ ssh: server.ssh, command: 'echo __OK__' , timeoutMs: 5000});
-    res.json({ ok: true, result: r });
+    res.json({ ok: true, result: r, debug: { server: server.ssh, credentials: credInfo } });
   } catch (e) {
-    res.status(500).json({ ok: false, error: e.message });
+    res.status(500).json({ ok: false, error: e.message, debug: { 
+      server: server?.ssh,
+      envVars: {
+        SSH_KEY_PATH: process.env.SSH_KEY_PATH,
+        SSH_PASSPHRASE: process.env.SSH_PASSPHRASE,
+        SSH_PASSWORD: process.env.SSH_PASSWORD,
+        USE_SSH_AGENT: process.env.USE_SSH_AGENT,
+        SSH_AUTH_SOCK: process.env.SSH_AUTH_SOCK
+      }
+    }});
   }
 });
 

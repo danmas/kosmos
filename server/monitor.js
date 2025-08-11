@@ -9,7 +9,21 @@ const inventoryPath = path.join(process.cwd(), 'inventory.json');
 if (!fs.existsSync(inventoryPath)) {
   throw new Error('inventory.json not found in project root');
 }
-const inventory = JSON.parse(fs.readFileSync(inventoryPath, 'utf8'));
+function expandEnvPlaceholders(obj) {
+  if (obj == null) return obj;
+  if (typeof obj === 'string') {
+    return obj.replace(/\$\{([A-Z0-9_]+)\}/gi, (_, name) => process.env[name] ?? '');
+  }
+  if (Array.isArray(obj)) return obj.map(expandEnvPlaceholders);
+  if (typeof obj === 'object') {
+    const out = {};
+    for (const [k, v] of Object.entries(obj)) out[k] = expandEnvPlaceholders(v);
+    return out;
+  }
+  return obj;
+}
+
+const inventory = expandEnvPlaceholders(JSON.parse(fs.readFileSync(inventoryPath, 'utf8')));
 
 // Cache private keys in memory
 const credentialCache = new Map();
@@ -23,14 +37,15 @@ function getCredential(credentialId) {
     } catch (e) {
       // ignore read errors here; auth may use agent/password
     }
-    credentialCache.set(cred.id, { ...cred, privateKey });
+    const useAgent = typeof cred.useAgent === 'string' ? ['1', 'true', 'yes', 'on'].includes(cred.useAgent.toLowerCase()) : !!cred.useAgent;
+    credentialCache.set(cred.id, { ...cred, useAgent, privateKey });
   }
   return credentialCache.get(cred.id);
 }
 
 function reloadInventory() {
   const raw = fs.readFileSync(inventoryPath, 'utf8');
-  const fresh = JSON.parse(raw);
+  const fresh = expandEnvPlaceholders(JSON.parse(raw));
   // mutate exported object in-place so other modules keep reference
   for (const k of Object.keys(inventory)) delete inventory[k];
   Object.assign(inventory, fresh);
@@ -72,7 +87,7 @@ function sshExec({ ssh, command, timeoutMs = 5000 }) {
         reject(e);
       })
       .connect((() => {
-        const base = { host: ssh.host, port: ssh.port || 22, username: ssh.user };
+        const base = { host: ssh.host, port: Number(ssh.port) || 22, username: ssh.user };
         const agentSock = process.env.SSH_AUTH_SOCK || (process.platform === 'win32' ? '\\\\.\\pipe\\openssh-ssh-agent' : undefined);
         const auth = { ...base };
         if (cred.useAgent) auth.agent = agentSock;

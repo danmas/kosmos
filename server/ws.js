@@ -16,7 +16,9 @@ function resolvePrivateKey(credentialId) {
   } catch (e) {
     // ignore; may use agent/password instead
   }
-  return { key, passphrase: cred.passphrase || undefined, password: cred.password, useAgent: !!cred.useAgent };
+  let useAgent = cred.useAgent;
+  if (typeof useAgent === 'string') useAgent = ['1', 'true', 'yes', 'on'].includes(useAgent.toLowerCase());
+  return { key, passphrase: cred.passphrase || undefined, password: cred.password, useAgent: !!useAgent };
 }
 
 function attachWsServer(httpServer) {
@@ -80,9 +82,9 @@ function handleTerminal(ws, url) {
       setTimeout(() => { try { ws.close(1011, e.message); } catch {} }, 10);
     })
     .connect((() => {
-      const base = { host: server.ssh.host, port: server.ssh.port || 22, username: server.ssh.user };
+      const base = { host: server.ssh.host, port: Number(server.ssh.port) || 22, username: server.ssh.user };
       const auth = { ...base };
-      const agentSock = process.env.SSH_AUTH_SOCK || (process.platform === 'win32' ? "\\\\.\\\pipe\\openssh-ssh-agent" : undefined);
+      const agentSock = process.env.SSH_AUTH_SOCK || (process.platform === 'win32' ? '\\\\.\\pipe\\openssh-ssh-agent' : undefined);
       if (useAgent && agentSock) auth.agent = agentSock;
       if (key) auth.privateKey = key;
       if (passphrase) auth.passphrase = passphrase;
@@ -130,9 +132,9 @@ function handleTail(ws, url) {
       setTimeout(() => { try { ws.close(1011, e.message); } catch {} }, 10);
     })
     .connect((() => {
-      const base = { host: server.ssh.host, port: server.ssh.port || 22, username: server.ssh.user };
+      const base = { host: server.ssh.host, port: Number(server.ssh.port) || 22, username: server.ssh.user };
       const auth = { ...base };
-      const agentSock = process.env.SSH_AUTH_SOCK || (process.platform === 'win32' ? '\\\\./pipe/openssh-ssh-agent' : undefined);
+      const agentSock = process.env.SSH_AUTH_SOCK || (process.platform === 'win32' ? '\\\\.\\pipe\\openssh-ssh-agent' : undefined);
       if (useAgent) auth.agent = agentSock;
       if (key) auth.privateKey = key;
       if (passphrase) auth.passphrase = passphrase;

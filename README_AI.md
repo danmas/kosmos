@@ -10,10 +10,12 @@
 - Frontend (ванильный JS) — `web/`:
   - `index.html`, `styles.css`, `app.js`: сетка плиток, тултипы, меню действий, xterm.js терминал, плавающие окна терминала/tail, открытие отдельного окна `/term.html`.
   - `term.html`: автономная вкладка/окно с xterm.
-- Конфиг — `inventory.json`:
-  - `credentials`: `privateKeyPath?`, `passphrase?`, `useAgent?`, `password?`
-  - `servers[].ssh { host, port, user, credentialId }`
-  - `servers[].services[]` со `type`: http|httpJson|tcp|tls|systemd|sshCommand|dockerContainer
+- Конфиг:
+  - `inventory.json`: список серверов, сервисов и привязок к кредам.
+    - `credentials`: `privateKeyPath?`, `passphrase?`, `useAgent?`, `password?`
+    - `servers[].ssh { host, port, user, credentialId }`
+    - `servers[].services[]` со `type`: http|httpJson|tcp|tls|systemd|sshCommand|dockerContainer
+  - `.env`: **(Новое)** Файл для хранения секретов (пароли, пути к ключам). Не должен быть в git.
 
 ## Контракты
 - `/api/servers` ⇒ `{ ts, servers:[{ id,name,env,color,ssh,services:[{id,name,type,ok,detail}] }] }`
@@ -27,16 +29,16 @@
 - Не логировать содержимое ключей; в API допустимы только пути.
 - Терминал/tail — только по SSH. Ошибки показывать как `[FATAL]`.
 - Front без сборки/фреймворков; xterm.js — через CDN.
-- SSH‑агент: использовать только `process.env.SSH_AUTH_SOCK`. Не пытаться «угадать» сокет (на Windows это ломало код).
+- SSH-агент: на Windows используется путь `\\\\.\\pipe\\openssh-ssh-agent`.
+- `.env` файл используется для подстановки переменных в `inventory.json` (например, `${SSH_PASSWORD}`).
 
 ## Как расширять
 - Новый тип проверки: добавить `checkX(...)` и подключить в `runServiceCheck()` (`server/monitor.js`).
 - Новое действие UI: дописать пункт в `openActions()` (`web/app.js`) и обработчик.
 - Новые источники статуса: расширить `pollOnce()` параллельным сбором.
-- WS‑протокол: добавлять новые `type` без ломки существующих.
+- WS‑протокол: добавлять новые `type` без lomки существующих.
 
 ## Известные места/долги
-- В прошлом были попытки автоподстановки пути SSH‑агента в `server/ws.js`; оставить только использование `process.env.SSH_AUTH_SOCK`.
 - Нет auth в веб‑панели (при необходимости — JWT + роли).
 - Нужен whitelist/confirm для опасных экшенов.
 
