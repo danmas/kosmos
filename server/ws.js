@@ -1,6 +1,7 @@
 const WebSocket = require('ws');
 const { Client } = require('ssh2');
 const { inventory } = require('./monitor');
+const fetch = require('node-fetch');
 
 function findServer(serverId) {
   return (inventory.servers || []).find((s) => s.id === serverId);
@@ -62,14 +63,69 @@ function handleTerminal(ws, url) {
           setTimeout(() => { try { ws.close(1011, 'shell error'); } catch {}; conn.end(); }, 10);
           return;
         }
-        ws.on('message', (msg) => {
+
+        ws.on('message', async (msg) => {
           try {
             const obj = JSON.parse(msg.toString());
-            if (obj.type === 'data') stream.write(obj.data);
-            if (obj.type === 'resize' && obj.cols && obj.rows) stream.setWindow(obj.rows, obj.cols, 600, 800);
-            if (obj.type === 'close') stream.end();
-          } catch {}
+            const { type, data, prompt } = obj;
+
+            if (type === 'data') {
+              stream.write(data);
+            } else if (type === 'resize' && obj.cols && obj.rows) {
+              stream.setWindow(obj.rows, obj.cols, 600, 800);
+            } else if (type === 'close') {
+              stream.end();
+            } else if (type === 'ai_query' && prompt) {
+              // Очищаем текущую строку в shell (удаляем команду ai:...)
+              stream.write('\x15');
+              
+              const aiPrompt = prompt.substring(prompt.indexOf('ai:') + 3).trim();
+
+              try {
+                const aiServerUrl = process.env.AI_SERVER_URL || 'http://localhost:3002/api/send-request';
+                const aiModel = process.env.AI_MODEL || 'moonshotai/kimi-dev-72b:free';
+                const aiProvider = process.env.AI_PROVIDER || 'openroute';
+                const aiSystemPrompt = process.env.AI_SYSTEM_PROMPT || 'You are a Linux terminal AI assistant. Your task is to convert the user\'s request into a valid shell command, and return ONLY the shell command itself without any explanation.';
+                
+                const aiResponse = await fetch(aiServerUrl, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    model: aiModel,
+                    prompt: aiSystemPrompt,
+                    inputText: aiPrompt,
+                    provider: aiProvider
+                  })
+                });
+                const aiResult = await aiResponse.json();
+
+                if (aiResult.success && aiResult.content) {
+                  let commandToExecute = aiResult.content.trim();
+                  
+                  // Если AI вернул многострочный ответ, берем только первую строку
+                  const lines = commandToExecute.split('\n');
+                  if (lines.length > 1) {
+                    commandToExecute = lines[0].trim();
+                  }
+                  
+                  // Удаляем markdown кавычки, если есть
+                  commandToExecute = commandToExecute.replace(/^```[a-z]*\s*|\s*```$/g, '').trim();
+                  
+                  stream.write(commandToExecute + '\r');
+                } else {
+                  throw new Error(aiResult.error || 'Invalid response from AI API');
+                }
+              } catch (e) {
+                const errorMsg = `\r\n\x1b[1;31m[AI Error] ${e.message}\x1b[0m\r\n`;
+                ws.send(JSON.stringify({ type: 'data', data: errorMsg }));
+                stream.write('\r');
+              }
+            }
+          } catch (e) {
+            console.error('[ERROR] in ws.on(message):', e);
+          }
         });
+
         stream.on('data', (d) => ws.send(JSON.stringify({ type: 'data', data: d.toString('utf8') })));
         stream.stderr.on('data', (d) => ws.send(JSON.stringify({ type: 'err', data: d.toString('utf8') })));
         stream.on('close', () => { try { ws.close(); } catch {}; conn.end(); });
@@ -85,7 +141,7 @@ function handleTerminal(ws, url) {
       const base = { host: server.ssh.host, port: Number(server.ssh.port) || 22, username: server.ssh.user };
       const auth = { ...base };
       const agentSock = process.env.SSH_AUTH_SOCK || (process.platform === 'win32' ? '\\\\.\\pipe\\openssh-ssh-agent' : undefined);
-      if (useAgent && agentSock) auth.agent = agentSock;
+      if (useAgent) auth.agent = agentSock;
       if (key) auth.privateKey = key;
       if (passphrase) auth.passphrase = passphrase;
       if (password) auth.password = password;

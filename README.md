@@ -1,6 +1,6 @@
 # Kosmos Panel — панель мониторинга и управления серверами (Node.js + ванильный JS)
 
-Агент‑less панель в стиле «космической приборки»: опрашивает сервера по SSH/HTTP/TCP, показывает статусы, даёт быстрый доступ к терминалу (xterm.js) и хвостам логов. Фронт — чистый JavaScript, бэк — Node.js.
+Агент‑less панель в стиле «космической приборки»: опрашивает сервера по SSH/HTTP/TCP, показывает статусы, даёт быстрый доступ к терминалу (xterm.js) и хвостам логов. **Встроенный AI-помощник** преобразует команды на естественном языке в shell-команды прямо в терминале. Фронт — чистый JavaScript, бэк — Node.js.
 
 ## Возможности
 - Мониторинг без агентов:
@@ -10,6 +10,7 @@
 - Плитки серверов (цвет: green/yellow/red/gray), тултипы со сводкой
 - Быстрые действия: терминал SSH (xterm.js), tail логов, ssh:// и копирование команды
 - Плавающие окна терминала/tail (несколько одновременно) и отдельная вкладка `/term.html`
+- **AI-команды в терминале**: введите `ai: ваш запрос` и получите готовую shell-команду
 - Горячая перезагрузка `inventory.json` (без рестартов)
 
 ## Быстрый старт (Windows)
@@ -73,6 +74,12 @@ SSH_PASSWORD=your_secret_password
 
 # Использовать ли SSH-агент (true/false)
 USE_SSH_AGENT=false
+
+# AI Configuration (для AI-команд в терминале)
+AI_SERVER_URL=http://localhost:3002/api/send-request
+AI_MODEL=moonshotai/kimi-dev-72b:free
+AI_PROVIDER=openroute
+AI_SYSTEM_PROMPT=You are a Linux terminal AI assistant. Your task is to convert the user's request into a valid shell command, and return ONLY the shell command itself without any explanation.
 ```
 
 Значения из этого файла подставляются в `inventory.json`, если там используются плейсхолдеры вида `${VAR_NAME}`.
@@ -81,10 +88,11 @@ USE_SSH_AGENT=false
 - Плитки → hover: тултип; click: меню действий
 - Меню: терминал/tail во встроенном окне, в плавающих окнах и в отдельной вкладке (`/term.html`)
 - Терминал — xterm.js: цвета, UTF‑8, прокрутка; ввод идёт прямо в терминал
+- **AI-команды**: `ai: покажи файлы` → автоматически выполнится `ls -la`
 
 ## API/WS
 - REST: `GET /api/servers`, `GET /api/inventory`, `POST /api/reload`, `GET /api/test-ssh?serverId=...`
 - WS: `/ws/terminal?serverId=...`, `/ws/tail?serverId=...&path=/var/log/syslog&lines=200`
-- Сообщения WS: `{ "type": "data"|"err"|"fatal", "data"?: "...", "error"?: "..." }`
+- Сообщения WS: `{ "type": "data"|"err"|"fatal"|"ai_query", "data"?: "...", "error"?: "...", "prompt"?: "..." }`
 
 ## Структура проекта

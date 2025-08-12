@@ -157,7 +157,24 @@ function openTerminal(server) {
   ws.onclose = (ev) => {
     xterm.writeln(`\r\n[соединение закрыто${ev.code ? ' код ' + ev.code : ''}]`);
   };
-  xterm.onData((data) => { try { ws.send(JSON.stringify({ type: 'data', data })); } catch {} });
+
+  xterm.onData((data) => {
+    // Для интерактивности, всегда отправляем данные на сервер
+    try { ws.send(JSON.stringify({ type: 'data', data })); } catch {}
+  });
+
+  xterm.attachCustomKeyEventHandler((arg) => {
+    if (arg.code === 'Enter' && arg.type === 'keydown') {
+      const buffer = xterm.buffer.active;
+      const commandLine = buffer.getLine(buffer.cursorY).translateToString(true);
+
+      if (commandLine.includes('ai:')) {
+        ws.send(JSON.stringify({ type: 'ai_query', prompt: commandLine }));
+        return false; // Блокируем отправку Enter через onData
+      }
+    }
+    return true; // Разрешаем все остальные клавиши
+  });
 }
 
 function openTail(server, path) {
@@ -242,7 +259,23 @@ function openTerminalWindow(server, mode, arg) {
   ws.onmessage = (ev) => { try { const msg = JSON.parse(ev.data); if (msg.type==='data'||msg.type==='err') term.write(msg.data); if (msg.type==='fatal') term.writeln(`\r\n[FATAL] ${msg.error}`); } catch {} };
   ws.onclose = (ev) => term.writeln(`\r\n[соединение закрыто${ev.code ? ' код ' + ev.code : ''}]`);
   closeBtn.onclick = () => { try { ws.close(); } catch {}; win.remove(); };
-  if (mode === 'terminal') term.onData((d) => { try { ws.send(JSON.stringify({ type:'data', data:d })); } catch {} });
+
+  if (mode === 'terminal') {
+    term.onData((d) => { try { ws.send(JSON.stringify({ type:'data', data:d })); } catch {} });
+
+    term.attachCustomKeyEventHandler((arg) => {
+      if (arg.code === 'Enter' && arg.type === 'keydown') {
+        const buffer = term.buffer.active;
+        const commandLine = buffer.getLine(buffer.cursorY).translateToString(true);
+        
+        if (commandLine.includes('ai:')) {
+          ws.send(JSON.stringify({ type: 'ai_query', prompt: commandLine }));
+          return false; // Блокируем отправку Enter через onData
+        }
+      }
+      return true; // Разрешаем все остальные клавиши
+    });
+  }
 
   titleEl.textContent = mode === 'tail' ? `${server.name} — tail ${arg}` : `${server.name} — терминал (${id})`;
 }

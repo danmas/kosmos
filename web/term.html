@@ -32,6 +32,7 @@
       title.textContent = mode === 'tail' ? `tail ${path}` : `terminal (${serverId})`;
       const termDiv = document.getElementById('term');
       const term = new Terminal({ convertEol:true, cursorBlink:true, theme:{ background:'#000000', foreground:'#00ff00' } });
+      
       const fit = new window.FitAddon.FitAddon();
       term.loadAddon(fit); term.open(termDiv); setTimeout(()=>{ try{fit.fit()}catch{} },0);
       const wsProto = location.protocol === 'https:' ? 'wss' : 'ws';
@@ -43,7 +44,38 @@
       ws.onopen = () => term.writeln('[соединение установлено]');
       ws.onmessage = ev => { try { const m = JSON.parse(ev.data); if (m.type==='data'||m.type==='err') term.write(m.data); if (m.type==='fatal') term.writeln(`\r\n[FATAL] ${m.error}`); } catch {} };
       ws.onclose = ev => term.writeln(`\r\n[соединение закрыто${ev.code ? ' код ' + ev.code : ''}]`);
-      if (mode !== 'tail') term.onData(d => { try { ws.send(JSON.stringify({ type:'data', data:d })); } catch {} });
+      
+      if (mode !== 'tail') {
+        term.onData(d => { try { ws.send(JSON.stringify({ type:'data', data:d })); } catch {} });
+        
+        term.attachCustomKeyEventHandler((arg) => {
+          if (arg.code === 'Enter' && arg.type === 'keydown') {
+            const buffer = term.buffer.active;
+            
+            // Ищем последнюю строку с shell prompt (содержащую @ и # или $)
+            for (let i = buffer.length - 1; i >= 0; i--) {
+              const line = buffer.getLine(i).translateToString(true);
+              
+              // Если это строка с shell prompt и содержит ai:
+              if ((line.includes('@') && (line.includes('#') || line.includes('$'))) && line.includes('ai:')) {
+                // Показываем пользователю, что AI обрабатывает запрос
+                const aiPrompt = line.substring(line.indexOf('ai:') + 3).trim();
+                term.write('\r\n\x1b[1;33mЗапрос к AI: ' + aiPrompt + '\x1b[0m\r\n');
+                
+                ws.send(JSON.stringify({ type: 'ai_query', prompt: line }));
+                return false; // Блокируем стандартную отправку Enter
+              }
+              
+              // Если нашли shell prompt без ai: - останавливаемся
+              if (line.includes('@') && (line.includes('#') || line.includes('$'))) {
+                break;
+              }
+            }
+          }
+          return true; // Разрешаем все остальные клавиши
+        });
+      }
+
       document.getElementById('close').onclick = () => { try { ws.close(); } catch {}; window.close(); };
       document.getElementById('fit').onclick = () => { try { fit.fit(); } catch {} };
     </script>
