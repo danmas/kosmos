@@ -4,14 +4,17 @@ class InventoryEditor {
     this.isModified = false;
     this.autoSaveTimer = null;
     this.validationTimer = null;
+    this.codeMirror = null;
     
     this.initElements();
+    this.initCodeMirror();
     this.bindEvents();
     this.loadInventory();
   }
   
   initElements() {
     this.jsonEditor = document.getElementById('json-editor');
+    this.jsonEditorContainer = document.getElementById('json-editor-container');
     this.saveBtn = document.getElementById('save-btn');
     this.reloadBtn = document.getElementById('reload-btn');
     this.validateBtn = document.getElementById('validate-btn');
@@ -38,8 +41,40 @@ class InventoryEditor {
     this.previewContent = document.getElementById('preview-content');
   }
   
+  initCodeMirror() {
+    this.codeMirror = CodeMirror(this.jsonEditorContainer, {
+      mode: { name: "javascript", json: true },
+      theme: "material-darker",
+      lineNumbers: true,
+      lineWrapping: false,
+      matchBrackets: true,
+      autoCloseBrackets: true,
+      styleActiveLine: true,
+      foldGutter: true,
+      gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+      indentUnit: 2,
+      tabSize: 2,
+      indentWithTabs: false,
+      extraKeys: {
+        "Ctrl-S": () => this.saveInventory(),
+        "Ctrl-Shift-F": () => this.reformatJson(),
+        "Tab": (cm) => {
+          if (cm.somethingSelected()) {
+            cm.indentSelection("add");
+          } else {
+            cm.replaceSelection(Array(cm.getOption("indentUnit") + 1).join(" "));
+          }
+        }
+      }
+    });
+    
+    // События CodeMirror
+    this.codeMirror.on('change', () => this.onEditorChange());
+    this.codeMirror.on('cursorActivity', () => this.updateCursorPosition());
+  }
+  
   bindEvents() {
-    // Редактор
+    // Редактор (оставляем для fallback)
     this.jsonEditor.addEventListener('input', () => this.onEditorChange());
     this.jsonEditor.addEventListener('keyup', () => this.updateCursorPosition());
     this.jsonEditor.addEventListener('click', () => this.updateCursorPosition());
@@ -94,7 +129,14 @@ class InventoryEditor {
       
       const text = await response.text();
       this.currentData = JSON.parse(text);
-      this.jsonEditor.value = JSON.stringify(this.currentData, null, 2);
+      const formattedJson = JSON.stringify(this.currentData, null, 2);
+      
+      // Обновляем CodeMirror
+      this.codeMirror.setValue(formattedJson);
+      
+      // Fallback для textarea
+      this.jsonEditor.value = formattedJson;
+      
       this.isModified = false;
       this.updateFileSize();
       this.updateServerList();
@@ -108,7 +150,9 @@ class InventoryEditor {
     } catch (error) {
       console.error('Ошибка загрузки inventory.json:', error);
       this.setSaveStatus('error', 'Ошибка загрузки');
-      this.jsonEditor.value = `// Ошибка загрузки inventory.json: ${error.message}\n// Создайте новый файл или проверьте права доступа\n\n{\n  "credentials": [],\n  "servers": [],\n  "poll": {\n    "intervalSec": 15,\n    "concurrency": 6\n  }\n}`;
+      const errorContent = `// Ошибка загрузки inventory.json: ${error.message}\n// Создайте новый файл или проверьте права доступа\n\n{\n  "credentials": [],\n  "servers": [],\n  "poll": {\n    "intervalSec": 15,\n    "concurrency": 6\n  }\n}`;
+      
+      this.setEditorValue(errorContent);
       this.validateJson();
     }
   }
@@ -119,7 +163,7 @@ class InventoryEditor {
       this.saveBtn.disabled = true;
       
       // Валидация перед сохранением
-      const data = JSON.parse(this.jsonEditor.value);
+      const data = JSON.parse(this.getEditorValue());
       
       const response = await fetch('/api/inventory', {
         method: 'POST',
@@ -158,7 +202,7 @@ class InventoryEditor {
   
   validateJson() {
     try {
-      const data = JSON.parse(this.jsonEditor.value);
+      const data = JSON.parse(this.getEditorValue());
       
       // Базовая валидация структуры
       if (!data || typeof data !== 'object') {
@@ -216,9 +260,9 @@ class InventoryEditor {
   
   reformatJson() {
     try {
-      const data = JSON.parse(this.jsonEditor.value);
+      const data = JSON.parse(this.getEditorValue());
       const formatted = JSON.stringify(data, null, 2);
-      this.jsonEditor.value = formatted;
+      this.setEditorValue(formatted);
       this.onEditorChange();
       this.setSaveStatus('modified', 'Отформатировано');
     } catch (error) {
@@ -250,19 +294,26 @@ class InventoryEditor {
   }
   
   updateCursorPosition() {
-    const textarea = this.jsonEditor;
-    const text = textarea.value;
-    const cursorPos = textarea.selectionStart;
-    
-    const lines = text.substring(0, cursorPos).split('\n');
-    const line = lines.length;
-    const column = lines[lines.length - 1].length + 1;
-    
-    this.lineColStatus.textContent = `Строка ${line}, Столбец ${column}`;
+    if (this.codeMirror) {
+      const cursor = this.codeMirror.getCursor();
+      this.lineColStatus.textContent = `Строка ${cursor.line + 1}, Столбец ${cursor.ch + 1}`;
+    } else {
+      // Fallback для textarea
+      const textarea = this.jsonEditor;
+      const text = textarea.value;
+      const cursorPos = textarea.selectionStart;
+      
+      const lines = text.substring(0, cursorPos).split('\n');
+      const line = lines.length;
+      const column = lines[lines.length - 1].length + 1;
+      
+      this.lineColStatus.textContent = `Строка ${line}, Столбец ${column}`;
+    }
   }
   
   updateFileSize() {
-    const bytes = new Blob([this.jsonEditor.value]).size;
+    const content = this.getEditorValue();
+    const bytes = new Blob([content]).size;
     const kb = (bytes / 1024).toFixed(1);
     this.fileSizeStatus.textContent = `${kb} КБ (${bytes} байт)`;
   }
@@ -284,31 +335,21 @@ class InventoryEditor {
   }
   
   jumpToServer(serverId) {
-    const content = this.jsonEditor.value;
+    const content = this.getEditorValue();
     const serverRegex = new RegExp(`"id"\\s*:\\s*"${serverId.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`, 'g');
     const match = serverRegex.exec(content);
     
-    if (match) {
-      // Находим начало объекта сервера
-      let pos = match.index;
-      let braceCount = 0;
-      let serverStart = pos;
-      
-      // Ищем назад до начала объекта
-      for (let i = pos; i >= 0; i--) {
-        if (content[i] === '}') braceCount++;
-        if (content[i] === '{') {
-          braceCount--;
-          if (braceCount < 0) {
-            serverStart = i;
-            break;
-          }
-        }
-      }
-      
+    if (match && this.codeMirror) {
+      // Находим позицию в CodeMirror
+      const pos = this.codeMirror.posFromIndex(match.index);
+      this.codeMirror.setCursor(pos);
+      this.codeMirror.scrollIntoView(pos, 100);
+      this.codeMirror.focus();
+      this.updateCursorPosition();
+    } else if (match) {
+      // Fallback для textarea
       this.jsonEditor.focus();
-      this.jsonEditor.setSelectionRange(serverStart, serverStart);
-      this.jsonEditor.scrollTop = this.jsonEditor.scrollHeight * (serverStart / content.length) - this.jsonEditor.clientHeight / 3;
+      this.jsonEditor.setSelectionRange(match.index, match.index);
       this.updateCursorPosition();
     }
   }
@@ -411,11 +452,12 @@ class InventoryEditor {
     };
     
     try {
-      const data = JSON.parse(this.jsonEditor.value);
+      const data = JSON.parse(this.getEditorValue());
       if (!data.servers) data.servers = [];
       data.servers.push(newServer);
       
-      this.jsonEditor.value = JSON.stringify(data, null, 2);
+      const formatted = JSON.stringify(data, null, 2);
+      this.setEditorValue(formatted);
       this.onEditorChange();
       this.jumpToServer(newServer.id);
       
@@ -435,11 +477,12 @@ class InventoryEditor {
     };
     
     try {
-      const data = JSON.parse(this.jsonEditor.value);
+      const data = JSON.parse(this.getEditorValue());
       if (!data.credentials) data.credentials = [];
       data.credentials.push(newCredential);
       
-      this.jsonEditor.value = JSON.stringify(data, null, 2);
+      const formatted = JSON.stringify(data, null, 2);
+      this.setEditorValue(formatted);
       this.onEditorChange();
       
     } catch (error) {
@@ -485,6 +528,18 @@ class InventoryEditor {
     } else if (type === 'modified') {
       this.saveBtn.disabled = false;
     }
+  }
+  
+  // Вспомогательные методы для работы с редактором
+  getEditorValue() {
+    return this.codeMirror ? this.codeMirror.getValue() : this.jsonEditor.value;
+  }
+  
+  setEditorValue(value) {
+    if (this.codeMirror) {
+      this.codeMirror.setValue(value);
+    }
+    this.jsonEditor.value = value;
   }
 }
 

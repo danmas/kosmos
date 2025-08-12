@@ -5,6 +5,19 @@
     <title>Kosmos Panel - Редактор Inventory</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="./styles.css" />
+    
+    <!-- CodeMirror для подсветки синтаксиса -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/matchbrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/selection/active-line.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/fold/foldgutter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/fold/foldcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/fold/brace-fold.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/fold/foldgutter.min.css">
     <style>
       .editor-container {
         display: flex;
@@ -143,6 +156,54 @@
       
       .json-editor:focus {
         background: #1a1a1a;
+      }
+      
+      /* CodeMirror стили */
+      .CodeMirror {
+        height: 100%;
+        flex: 1;
+        font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+        font-size: 14px;
+        line-height: 1.5;
+        border: none;
+        background: var(--bg-dark) !important;
+      }
+      
+      .CodeMirror-gutters {
+        background: var(--bg-tile) !important;
+        border-right: 1px solid var(--border) !important;
+      }
+      
+      .CodeMirror-linenumber {
+        color: var(--text-muted) !important;
+        padding: 0 8px !important;
+      }
+      
+      .CodeMirror-cursor {
+        border-left: 2px solid var(--accent) !important;
+      }
+      
+      .CodeMirror-selected {
+        background: rgba(96, 165, 250, 0.2) !important;
+      }
+      
+      .CodeMirror-activeline-background {
+        background: rgba(255, 255, 255, 0.03) !important;
+      }
+      
+      /* JSON подсветка */
+      .cm-string { color: #98d982 !important; }
+      .cm-number { color: #d19a66 !important; }
+      .cm-atom { color: #c678dd !important; }
+      .cm-keyword { color: #61afef !important; }
+      .cm-property { color: #e06c75 !important; }
+      .cm-punctuation { color: var(--text) !important; }
+      .cm-comment { color: var(--text-muted) !important; font-style: italic; }
+      
+      .editor-codemirror {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
       }
       
       .status-bar {
@@ -333,7 +394,8 @@
           </div>
           
           <div class="tab-content" id="json-tab">
-            <textarea class="json-editor" id="json-editor" placeholder="Загрузка inventory.json..."></textarea>
+            <div class="editor-codemirror" id="json-editor-container"></div>
+            <textarea class="json-editor" id="json-editor" placeholder="Загрузка inventory.json..." style="display: none;"></textarea>
           </div>
           
           <div class="tab-content" id="preview-tab" style="display: none; padding: 1rem; overflow-y: auto;">
