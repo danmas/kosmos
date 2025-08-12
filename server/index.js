@@ -3,6 +3,7 @@ require('dotenv').config({ path: './.env' });
 const express = require('express');
 const http = require('http');
 const path = require('path');
+const fs = require('fs').promises;
 const { startScheduler, getSnapshot, inventory, reloadInventory, sshExec } = require('./monitor');
 const { attachWsServer } = require('./ws');
 
@@ -32,6 +33,109 @@ app.post('/api/reload', (req, res) => {
     res.json({ ok: true });
   } catch (e) {
     res.status(400).json({ ok: false, error: e.message });
+  }
+});
+
+// API для редактора inventory.json
+app.get('/inventory.json', async (req, res) => {
+  try {
+    const inventoryPath = path.join(process.cwd(), 'inventory.json');
+    const data = await fs.readFile(inventoryPath, 'utf8');
+    res.setHeader('Content-Type', 'application/json');
+    res.send(data);
+  } catch (e) {
+    if (e.code === 'ENOENT') {
+      res.status(404).json({ error: 'Файл inventory.json не найден' });
+    } else {
+      res.status(500).json({ error: e.message });
+    }
+  }
+});
+
+app.post('/api/inventory', async (req, res) => {
+  try {
+    const inventoryPath = path.join(process.cwd(), 'inventory.json');
+    
+    // Валидация входящих данных
+    const data = req.body;
+    if (!data || typeof data !== 'object') {
+      return res.status(400).json({ error: 'Некорректные данные' });
+    }
+    
+    if (!Array.isArray(data.credentials)) {
+      return res.status(400).json({ error: 'Поле "credentials" должно быть массивом' });
+    }
+    
+    if (!Array.isArray(data.servers)) {
+      return res.status(400).json({ error: 'Поле "servers" должно быть массивом' });
+    }
+    
+    if (!data.poll || typeof data.poll !== 'object') {
+      return res.status(400).json({ error: 'Поле "poll" должно быть объектом' });
+    }
+    
+    // Валидация серверов
+    for (let i = 0; i < data.servers.length; i++) {
+      const server = data.servers[i];
+      if (!server.id) {
+        return res.status(400).json({ error: `Сервер ${i + 1}: отсутствует поле "id"` });
+      }
+      if (!server.name) {
+        return res.status(400).json({ error: `Сервер ${i + 1}: отсутствует поле "name"` });
+      }
+      if (!server.ssh || !server.ssh.host || !server.ssh.user) {
+        return res.status(400).json({ error: `Сервер ${i + 1}: некорректные настройки SSH` });
+      }
+      if (!Array.isArray(server.services)) {
+        return res.status(400).json({ error: `Сервер ${i + 1}: поле "services" должно быть массивом` });
+      }
+    }
+    
+    // Проверка уникальности ID серверов
+    const serverIds = data.servers.map(s => s.id);
+    const duplicateIds = serverIds.filter((id, index) => serverIds.indexOf(id) !== index);
+    if (duplicateIds.length > 0) {
+      return res.status(400).json({ error: `Дублирующиеся ID серверов: ${duplicateIds.join(', ')}` });
+    }
+    
+    // Валидация учетных данных
+    for (let i = 0; i < data.credentials.length; i++) {
+      const cred = data.credentials[i];
+      if (!cred.id) {
+        return res.status(400).json({ error: `Учетные данные ${i + 1}: отсутствует поле "id"` });
+      }
+      if (!cred.type) {
+        return res.status(400).json({ error: `Учетные данные ${i + 1}: отсутствует поле "type"` });
+      }
+    }
+    
+    // Проверка уникальности ID учетных данных
+    const credIds = data.credentials.map(c => c.id);
+    const duplicateCredIds = credIds.filter((id, index) => credIds.indexOf(id) !== index);
+    if (duplicateCredIds.length > 0) {
+      return res.status(400).json({ error: `Дублирующиеся ID учетных данных: ${duplicateCredIds.join(', ')}` });
+    }
+    
+    // Создаем резервную копию
+    const backupPath = `${inventoryPath}.backup.${Date.now()}`;
+    try {
+      await fs.copyFile(inventoryPath, backupPath);
+    } catch (e) {
+      // Игнорируем ошибку если исходный файл не существует
+      if (e.code !== 'ENOENT') {
+        console.warn('Не удалось создать резервную копию:', e.message);
+      }
+    }
+    
+    // Сохраняем новый файл
+    const jsonContent = JSON.stringify(data, null, 2);
+    await fs.writeFile(inventoryPath, jsonContent, 'utf8');
+    
+    res.json({ ok: true, message: 'Файл inventory.json успешно сохранен' });
+    
+  } catch (e) {
+    console.error('Ошибка сохранения inventory.json:', e);
+    res.status(500).json({ error: e.message });
   }
 });
 
