@@ -232,10 +232,8 @@ ${contextDocs}
       body: JSON.stringify({
         model: aiModel,
         provider: aiProvider,
-        messages: [
-          { role: 'system', content: systemPrompt },
-          { role: 'user', content: query }
-        ]
+        prompt: systemPrompt,
+        inputText: query
       })
     });
     
