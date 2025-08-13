@@ -280,6 +280,67 @@ function openTerminalWindow(server, mode, arg) {
   titleEl.textContent = mode === 'tail' ? `${server.name} — tail ${arg}` : `${server.name} — терминал (${id})`;
 }
 
+// AI Search functionality
+const aiSearchInput = document.getElementById('ai-search-input');
+const aiSearchBtn = document.getElementById('ai-search-btn');
+
+function showAIResponse(query, response) {
+  openOverlay(`AI Помощник: ${query.slice(0, 50)}...`);
+  terminalEl.innerHTML = '';
+  ensureTerm(); 
+  xterm.clear();
+  
+  xterm.writeln(`\x1b[36m[Запрос]\x1b[0m ${query}\n`);
+  xterm.writeln(`\x1b[32m[Ответ AI]\x1b[0m`);
+  
+  // Разбиваем ответ на строки для корректного отображения
+  const lines = response.split('\n');
+  lines.forEach(line => {
+    xterm.writeln(line);
+  });
+  
+  setTimeout(() => { try { fitAddon.fit(); } catch {} }, 0);
+}
+
+async function sendAIQuery(query) {
+  try {
+    aiSearchBtn.textContent = '⏳';
+    aiSearchBtn.disabled = true;
+    
+    const response = await fetch('/api/ai-help', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query })
+    });
+    
+    const result = await response.json();
+    
+    if (result.success) {
+      showAIResponse(query, result.response);
+    } else {
+      showAIResponse(query, `Ошибка: ${result.error}`);
+    }
+  } catch (error) {
+    showAIResponse(query, `Ошибка соединения: ${error.message}`);
+  } finally {
+    aiSearchBtn.textContent = '🔍';
+    aiSearchBtn.disabled = false;
+    aiSearchInput.value = '';
+  }
+}
+
+aiSearchBtn.onclick = () => {
+  const query = aiSearchInput.value.trim();
+  if (query) sendAIQuery(query);
+};
+
+aiSearchInput.onkeydown = (e) => {
+  if (e.key === 'Enter') {
+    const query = aiSearchInput.value.trim();
+    if (query) sendAIQuery(query);
+  }
+};
+
 async function loop() {
   try {
     const data = await fetchServers();

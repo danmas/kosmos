@@ -173,6 +173,98 @@ app.get('/api/test-ssh', async (req, res) => {
   }
 });
 
+// AI Help endpoint
+app.post('/api/ai-help', async (req, res) => {
+  try {
+    const { query } = req.body;
+    
+    if (!query || typeof query !== 'string') {
+      return res.status(400).json({ success: false, error: 'Отсутствует запрос' });
+    }
+    
+    // Читаем документацию из KB
+    const kbPath = path.join(process.cwd(), 'KB');
+    const readmePath = path.join(process.cwd(), 'README_AI.md');
+    const authReadmePath = path.join(process.cwd(), 'README_AUTH.md');
+    
+    let contextDocs = '';
+    
+    try {
+      // Добавляем основную документацию
+      const aiReadme = await fs.readFile(readmePath, 'utf8');
+      contextDocs += `=== README_AI.md ===\n${aiReadme}\n\n`;
+      
+      const authReadme = await fs.readFile(authReadmePath, 'utf8');
+      contextDocs += `=== README_AUTH.md ===\n${authReadme}\n\n`;
+      
+      // Добавляем документацию из KB
+      const kbFiles = await fs.readdir(kbPath);
+      for (const file of kbFiles) {
+        if (file.endsWith('.md')) {
+          const content = await fs.readFile(path.join(kbPath, file), 'utf8');
+          contextDocs += `=== KB/${file} ===\n${content}\n\n`;
+        }
+      }
+    } catch (e) {
+      console.warn('Ошибка чтения документации:', e.message);
+    }
+    
+    // Формируем системный промпт
+    const systemPrompt = process.env.AI_SYSTEM_PROMPT_HELP || process.env.AI_SYSTEM_PROMPT || `
+Ты - AI помощник для системы мониторинга Kosmos Panel. 
+Отвечай на русском языке, кратко и по делу.
+Используй предоставленную документацию для ответов.
+Если вопрос не относится к системе, вежливо объясни это.
+
+Документация системы:
+${contextDocs}
+`;
+    
+    // Отправляем запрос на AI сервер
+    const aiServerUrl = process.env.AI_SERVER_URL_HELP || process.env.AI_SERVER_URL || 'http://localhost:3002/api/send-request';
+    const aiModel = process.env.AI_MODEL_HELP || process.env.AI_MODEL || 'moonshotai/kimi-dev-72b:free';
+    const aiProvider = process.env.AI_PROVIDER_HELP || process.env.AI_PROVIDER || 'openroute';
+    
+    const aiResponse = await fetch(aiServerUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: aiModel,
+        provider: aiProvider,
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: query }
+        ]
+      })
+    });
+    
+    if (!aiResponse.ok) {
+      throw new Error(`AI сервер вернул ошибку: ${aiResponse.status}`);
+    }
+    
+    const aiResult = await aiResponse.json();
+    
+    if (aiResult.success) {
+      res.json({ 
+        success: true, 
+        response: aiResult.response || aiResult.message || 'Пустой ответ от AI' 
+      });
+    } else {
+      res.json({ 
+        success: false, 
+        error: aiResult.error || 'Неизвестная ошибка AI сервера' 
+      });
+    }
+    
+  } catch (error) {
+    console.error('Ошибка AI Help:', error);
+    res.status(500).json({ 
+      success: false, 
+      error: `Ошибка обработки запроса: ${error.message}` 
+    });
+  }
+});
+
 app.use('/', express.static(path.join(process.cwd(), 'web')));
 
 const port = process.env.PORT ? Number(process.env.PORT) : 3000;
