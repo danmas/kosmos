@@ -100,6 +100,7 @@ function handleTerminal(ws, url) {
                   })
                 });
                 const aiResult = await aiResponse.json();
+                console.log('[AI Debug] Response:', JSON.stringify(aiResult, null, 2));
 
                 if (aiResult.success && (aiResult.response || aiResult.content)) {
                   let commandToExecute = (aiResult.response || aiResult.content).trim();
