@@ -42,35 +42,47 @@ class InventoryEditor {
   }
   
   initCodeMirror() {
-    this.codeMirror = CodeMirror(this.jsonEditorContainer, {
-      mode: { name: "javascript", json: true },
-      theme: "material-darker",
-      lineNumbers: true,
-      lineWrapping: false,
-      matchBrackets: true,
-      autoCloseBrackets: true,
-      styleActiveLine: true,
-      foldGutter: true,
-      gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
-      indentUnit: 2,
-      tabSize: 2,
-      indentWithTabs: false,
-      extraKeys: {
-        "Ctrl-S": () => this.saveInventory(),
-        "Ctrl-Shift-F": () => this.reformatJson(),
-        "Tab": (cm) => {
-          if (cm.somethingSelected()) {
-            cm.indentSelection("add");
-          } else {
-            cm.replaceSelection(Array(cm.getOption("indentUnit") + 1).join(" "));
+    try {
+      if (typeof CodeMirror === 'undefined') {
+        console.warn('CodeMirror не загружен, используем fallback textarea');
+        return;
+      }
+      
+      this.codeMirror = CodeMirror(this.jsonEditorContainer, {
+        mode: { name: "javascript", json: true },
+        theme: "material-darker",
+        lineNumbers: true,
+        lineWrapping: false,
+        matchBrackets: true,
+        autoCloseBrackets: true,
+        styleActiveLine: true,
+        foldGutter: true,
+        gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+        indentUnit: 2,
+        tabSize: 2,
+        indentWithTabs: false,
+        extraKeys: {
+          "Ctrl-S": () => this.saveInventory(),
+          "Ctrl-Shift-F": () => this.reformatJson(),
+          "Tab": (cm) => {
+            if (cm.somethingSelected()) {
+              cm.indentSelection("add");
+            } else {
+              cm.replaceSelection(Array(cm.getOption("indentUnit") + 1).join(" "));
+            }
           }
         }
-      }
-    });
-    
-    // События CodeMirror
-    this.codeMirror.on('change', () => this.onEditorChange());
-    this.codeMirror.on('cursorActivity', () => this.updateCursorPosition());
+      });
+      
+      // События CodeMirror
+      this.codeMirror.on('change', () => this.onEditorChange());
+      this.codeMirror.on('cursorActivity', () => this.updateCursorPosition());
+      
+    } catch (error) {
+      console.error('Ошибка инициализации CodeMirror:', error);
+      console.log('Используем fallback textarea');
+      this.codeMirror = null;
+    }
   }
   
   bindEvents() {
@@ -532,12 +544,21 @@ class InventoryEditor {
   
   // Вспомогательные методы для работы с редактором
   getEditorValue() {
-    return this.codeMirror ? this.codeMirror.getValue() : this.jsonEditor.value;
+    if (this.codeMirror) {
+      return this.codeMirror.getValue();
+    } else {
+      // Показываем textarea если CodeMirror не работает
+      this.jsonEditor.style.display = 'block';
+      return this.jsonEditor.value;
+    }
   }
   
   setEditorValue(value) {
     if (this.codeMirror) {
       this.codeMirror.setValue(value);
+    } else {
+      // Показываем textarea если CodeMirror не работает
+      this.jsonEditor.style.display = 'block';
     }
     this.jsonEditor.value = value;
   }
