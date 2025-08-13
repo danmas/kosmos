@@ -92,18 +92,15 @@ function handleTerminal(ws, url) {
                   headers: { 'Content-Type': 'application/json' },
                   body: JSON.stringify({
                     model: aiModel,
-                    provider: aiProvider,
-                    messages: [
-                      { role: 'system', content: aiSystemPrompt },
-                      { role: 'user', content: aiPrompt }
-                    ]
+                    prompt: aiSystemPrompt,
+                    inputText: aiPrompt,
+                    provider: aiProvider
                   })
                 });
                 const aiResult = await aiResponse.json();
-                console.log('[AI Debug] Response:', JSON.stringify(aiResult, null, 2));
 
-                if (aiResult.success && (aiResult.response || aiResult.content)) {
-                  let commandToExecute = (aiResult.response || aiResult.content).trim();
+                if (aiResult.success && aiResult.content) {
+                  let commandToExecute = aiResult.content.trim();
                   
                   // Если AI вернул многострочный ответ, берем только первую строку
                   const lines = commandToExecute.split('\n');

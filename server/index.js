@@ -173,6 +173,7 @@ app.get('/api/test-ssh', async (req, res) => {
   }
 });
 
+
 // AI Help endpoint
 app.post('/api/ai-help', async (req, res) => {
   try {
@@ -264,6 +265,7 @@ ${contextDocs}
     });
   }
 });
+
 
 app.use('/', express.static(path.join(process.cwd(), 'web')));
 
