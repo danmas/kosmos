@@ -185,25 +185,32 @@ app.post('/api/ai-help', async (req, res) => {
     
     // Читаем документацию из KB
     const kbPath = path.join(process.cwd(), 'KB');
-    const readmePath = path.join(process.cwd(), 'README_AI.md');
-    const authReadmePath = path.join(process.cwd(), 'README_AUTH.md');
     
     let contextDocs = '';
     
     try {
-      // Добавляем основную документацию
-      const aiReadme = await fs.readFile(readmePath, 'utf8');
-      contextDocs += `=== README_AI.md ===\n${aiReadme}\n\n`;
-      
-      const authReadme = await fs.readFile(authReadmePath, 'utf8');
-      contextDocs += `=== README_AUTH.md ===\n${authReadme}\n\n`;
-      
-      // Добавляем документацию из KB
-      const kbFiles = await fs.readdir(kbPath);
-      for (const file of kbFiles) {
-        if (file.endsWith('.md')) {
-          const content = await fs.readFile(path.join(kbPath, file), 'utf8');
-          contextDocs += `=== KB/${file} ===\n${content}\n\n`;
+      const contextFiles = process.env.AI_HELP_CONTEXT_FILES 
+        ? process.env.AI_HELP_CONTEXT_FILES.split(',')
+        : ['README_AI.md', 'README_AUTH.md'];
+
+      for (const file of contextFiles) {
+        const filePath = path.join(process.cwd(), file.trim());
+        if (await fs.stat(filePath).catch(() => null)) {
+          const content = await fs.readFile(filePath, 'utf8');
+          contextDocs += `=== ${path.basename(file)} ===\n${content}\n\n`;
+        } else {
+          console.warn(`Файл документации не найден: ${file}`);
+        }
+      }
+
+      // Если AI_HELP_CONTEXT_FILES не задан, по умолчанию добавляем все из KB
+      if (!process.env.AI_HELP_CONTEXT_FILES) {
+        const kbFiles = await fs.readdir(kbPath);
+        for (const file of kbFiles) {
+          if (file.endsWith('.md')) {
+            const content = await fs.readFile(path.join(kbPath, file), 'utf8');
+            contextDocs += `=== KB/${file} ===\n${content}\n\n`;
+          }
         }
       }
     } catch (e) {
@@ -211,15 +218,14 @@ app.post('/api/ai-help', async (req, res) => {
     }
     
     // Формируем системный промпт
-    const systemPrompt = process.env.AI_SYSTEM_PROMPT_HELP || process.env.AI_SYSTEM_PROMPT || `
+    const baseSystemPrompt = process.env.AI_SYSTEM_PROMPT_HELP || `
 Ты - AI помощник для системы мониторинга Kosmos Panel. 
 Отвечай на русском языке, кратко и по делу.
 Используй предоставленную документацию для ответов.
 Если вопрос не относится к системе, вежливо объясни это.
-
-Документация системы:
-${contextDocs}
 `;
+
+    const systemPrompt = `${baseSystemPrompt}\n\nДокументация системы:\n${contextDocs}`;
     
     // Отправляем запрос на AI сервер
     const aiServerUrl = process.env.AI_SERVER_URL_HELP || process.env.AI_SERVER_URL || 'http://localhost:3002/api/send-request';
@@ -246,7 +252,7 @@ ${contextDocs}
     if (aiResult.success) {
       res.json({ 
         success: true, 
-        response: aiResult.response || aiResult.message || 'Пустой ответ от AI' 
+        response: aiResult.content || 'Пустой ответ от AI' 
       });
     } else {
       res.json({ 
