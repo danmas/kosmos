@@ -279,8 +279,6 @@ attachWsServer(server);
 
 server.listen(port, () => {
   console.log(`UI: http://localhost:${port}`);
-  const aiServerUrl = process.env.AI_SERVER_URL || 'http://localhost:3002/api/send-request';
-  console.log(`AI-сервер используется по адресу: ${aiServerUrl}`);
   startScheduler();
 });
 

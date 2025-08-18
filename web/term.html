@@ -52,12 +52,13 @@
           if (arg.code === 'Enter' && arg.type === 'keydown') {
             const buffer = term.buffer.active;
             
-            // Ищем последнюю строку с shell prompt (содержащую @ и # или $)
+            // Ищем последнюю строку с shell prompt
             for (let i = buffer.length - 1; i >= 0; i--) {
               const line = buffer.getLine(i).translateToString(true);
-              
-              // Если это строка с shell prompt и содержит ai:
-              if ((line.includes('@') && (line.includes('#') || line.includes('$'))) && line.includes('ai:')) {
+              const promptEndIndex = Math.max(line.lastIndexOf('$'), line.lastIndexOf('#'));
+
+              // Если нашли потенциальный промпт и 'ai:' идет после него
+              if (promptEndIndex !== -1 && line.substring(promptEndIndex).includes('ai:')) {
                 // Показываем пользователю, что AI обрабатывает запрос
                 const aiPrompt = line.substring(line.indexOf('ai:') + 3).trim();
                 term.write('\r\n\x1b[1;33mЗапрос к AI: ' + aiPrompt + '\x1b[0m\r\n');
@@ -67,7 +68,7 @@
               }
               
               // Если нашли shell prompt без ai: - останавливаемся
-              if (line.includes('@') && (line.includes('#') || line.includes('$'))) {
+              if (promptEndIndex !== -1) {
                 break;
               }
             }
