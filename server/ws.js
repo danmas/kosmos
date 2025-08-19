@@ -80,7 +80,9 @@ function handleTerminal(ws, url) {
               stream.end();
             } else if (type === 'ai_query' && prompt) {
               // Очищаем текущую строку в shell (удаляем команду ai:...)
-              stream.write('\x15');
+              // Старый метод: stream.write('\x15'); // CTRL+U, не работает на Windows
+              // Новый, универсальный метод:
+              stream.write('\b'.repeat(prompt.length));
               
               const aiPrompt = prompt.substring(prompt.indexOf('ai:') + 3).trim();
 
