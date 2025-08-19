@@ -45,6 +45,17 @@
       ws.onmessage = ev => { try { const m = JSON.parse(ev.data); if (m.type==='data'||m.type==='err') term.write(m.data); if (m.type==='fatal') term.writeln(`\r\n[FATAL] ${m.error}`); } catch {} };
       ws.onclose = ev => term.writeln(`\r\n[соединение закрыто${ev.code ? ' код ' + ev.code : ''}]`);
       
+      let aiCommandPrefix = 'ai:';
+
+      fetch('/api/config')
+        .then(res => res.json())
+        .then(config => {
+          if (config.aiCommandPrefix) {
+            aiCommandPrefix = config.aiCommandPrefix;
+          }
+        })
+        .catch(err => console.error('Failed to fetch AI config:', err));
+        
       if (mode !== 'tail') {
         term.onData(d => { try { ws.send(JSON.stringify({ type:'data', data:d })); } catch {} });
         
@@ -55,16 +66,24 @@
             // Ищем последнюю строку с shell prompt
             for (let i = buffer.length - 1; i >= 0; i--) {
               const line = buffer.getLine(i).translateToString(true);
-              const promptEndIndex = Math.max(line.lastIndexOf('$'), line.lastIndexOf('#'));
+              const promptEndIndex = Math.max(line.lastIndexOf('$'), line.lastIndexOf('#'), line.lastIndexOf('>'));
 
-              // Если нашли потенциальный промпт и 'ai:' идет после него
-              if (promptEndIndex !== -1 && line.substring(promptEndIndex).includes('ai:')) {
-                // Показываем пользователю, что AI обрабатывает запрос
-                const aiPrompt = line.substring(line.indexOf('ai:') + 3).trim();
-                term.write('\r\n\x1b[1;33mЗапрос к AI: ' + aiPrompt + '\x1b[0m\r\n');
+              if (promptEndIndex !== -1) {
+                const commandPart = line.substring(promptEndIndex);
                 
-                ws.send(JSON.stringify({ type: 'ai_query', prompt: line }));
-                return false; // Блокируем стандартную отправку Enter
+                const prefixText = aiCommandPrefix.slice(0, -1);
+                const prefixSep = aiCommandPrefix.slice(-1);
+                const commandRegex = new RegExp(`(${prefixText}\\s*${prefixSep})`);
+                
+                const match = commandPart.match(commandRegex);
+
+                if (match) {
+                  const aiPrompt = commandPart.substring(match.index + match[0].length).trim();
+                  term.write('\r\n\x1b[1;33mЗапрос к AI: ' + aiPrompt + '\x1b[0m\r\n');
+                  
+                  ws.send(JSON.stringify({ type: 'ai_query', prompt: line }));
+                  return false; // Блокируем стандартную отправку Enter
+                }
               }
               
               // Если нашли shell prompt без ai: - останавливаемся

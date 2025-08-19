@@ -2,6 +2,9 @@ const WebSocket = require('ws');
 const { Client } = require('ssh2');
 const { inventory } = require('./monitor');
 const fetch = require('node-fetch');
+const fs = require('fs').promises;
+const path = require('path');
+const os = require('os');
 
 function findServer(serverId) {
   return (inventory.servers || []).find((s) => s.id === serverId);
@@ -85,7 +88,63 @@ function handleTerminal(ws, url) {
                 const aiServerUrl = process.env.AI_SERVER_URL || 'http://localhost:3002/api/send-request';
                 const aiModel = process.env.AI_MODEL || 'moonshotai/kimi-dev-72b:free';
                 const aiProvider = process.env.AI_PROVIDER || 'openroute';
-                const aiSystemPrompt = process.env.AI_SYSTEM_PROMPT || 'You are a Linux terminal AI assistant. Your task is to convert the user\'s request into a valid shell command, and return ONLY the shell command itself without any explanation.';
+                const baseSystemPrompt = process.env.AI_SYSTEM_PROMPT || 'You are a Linux terminal AI assistant. Your task is to convert the user\'s request into a valid shell command, and return ONLY the shell command itself without any explanation.';
+
+                // --- START: Получение знаний ---
+
+                // 1. С удаленной машины по SSH
+                const getRemoteKnowledge = (sshConn) => new Promise((resolve) => {
+                  let content = '';
+                  console.log('[AI Knowledge] Attempting to read remote knowledge file: ~/.kosmos/README_kosmos.md');
+                  sshConn.exec('cat ~/.kosmos/README_kosmos.md', (err, stream) => {
+                    if (err) {
+                      console.error('[AI Knowledge] Error executing remote command:', err.message);
+                      return resolve(''); // Ошибка создания канала, вернем пустоту
+                    }
+                    stream.on('data', (data) => { content += data.toString(); });
+                    stream.stderr.on('data', (data) => {
+                      console.error('[AI Knowledge] Remote command stderr:', data.toString().trim());
+                    });
+                    stream.on('close', (code) => {
+                      if (code === 0 && content) {
+                        console.log(`[AI Knowledge] Successfully read remote knowledge (${content.length} bytes).`);
+                        resolve(content);
+                      } else {
+                        console.log('[AI Knowledge] Remote knowledge file not found, empty, or command failed.');
+                        resolve('');
+                      }
+                    });
+                  });
+                });
+
+                // 2. С локального сервера панели
+                const getLocalKnowledge = async () => {
+                  const knowledgePath = path.join(process.cwd(), '.kosmos', 'README_kosmos_server.md');
+                  console.log(`[AI Knowledge] Attempting to read local knowledge file: ${knowledgePath}`);
+                  try {
+                    const content = await fs.readFile(knowledgePath, 'utf8');
+                    console.log(`[AI Knowledge] Successfully read local knowledge (${content.length} bytes).`);
+                    return content;
+                  } catch (e) {
+                    console.log('[AI Knowledge] Local knowledge file not found or could not be read.');
+                    return '';
+                  } // Файл может не существовать
+                };
+
+                const [remoteKnowledge, localKnowledge] = await Promise.all([
+                  getRemoteKnowledge(conn),
+                  getLocalKnowledge()
+                ]);
+
+                let aiSystemPrompt = baseSystemPrompt;
+                if (remoteKnowledge.trim()) {
+                  aiSystemPrompt = `Context from remote system:\n${remoteKnowledge.trim()}\n\n---\n\n${aiSystemPrompt}`;
+                }
+                if (localKnowledge.trim()) {
+                  aiSystemPrompt = `Context from panel server:\n${localKnowledge.trim()}\n\n---\n\n${aiSystemPrompt}`;
+                }
+                
+                // --- END: Получение знаний ---
                 
                 const aiResponse = await fetch(aiServerUrl, {
                   method: 'POST',

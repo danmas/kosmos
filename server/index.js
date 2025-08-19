@@ -270,6 +270,11 @@ app.post('/api/ai-help', async (req, res) => {
   }
 });
 
+app.get('/api/config', (req, res) => {
+  res.json({
+    aiCommandPrefix: process.env.AI_COMMAND_PREFIX || 'ai:',
+  });
+});
 
 app.use('/', express.static(path.join(process.cwd(), 'web')));
 

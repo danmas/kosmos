@@ -49,6 +49,7 @@
   - `AI_SERVER_URL` — URL AI-сервера (по умолчанию `http://localhost:3002/api/send-request`)
   - `AI_MODEL` — модель AI (по умолчанию `moonshotai/kimi-dev-72b:free`)
   - `AI_PROVIDER` — провайдер AI (по умолчанию `openroute`)
+  - `AI_COMMAND_PREFIX` — **(Новое)** префикс для AI-команд (по умолчанию `ai:`). Можно изменить, например, на `ask:`.
   - `AI_SYSTEM_PROMPT` — системный промпт для AI
   - `AI_HELP_CONTEXT_FILES` — **(Новое)** список файлов (через запятую) для контекста AI-помощника. Пример: `README.md,KB/some_doc.md`. Если не задано, используются `README_AI.md`, `README_AUTH.md` и все файлы из `KB/*.md`.
 - **Обратная связь**: Пользователь видит `Запрос к AI: ...` во время обработки.
