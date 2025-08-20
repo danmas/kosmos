@@ -5,6 +5,8 @@ const fetch = require('node-fetch');
 const fs = require('fs').promises;
 const path = require('path');
 const os = require('os');
+const pty = require('node-pty');
+const { exec } = require('child_process'); // Import exec
 
 function findServer(serverId) {
   return (inventory.servers || []).find((s) => s.id === serverId);
@@ -258,6 +260,65 @@ function handleTail(ws, url) {
       if (password) auth.password = password;
       return auth;
     })());
+}
+
+async function handleAnalysisRequest(userPrompt, ws) {
+    ws.send(JSON.stringify({ type: 'ai_thinking' }));
+
+    // --- AI Pass 1: Get command from user prompt ---
+    let commandToExecute;
+    try {
+        // MOCK AI RESPONSE FOR DEMO
+        if (userPrompt.includes("место на дисках")) {
+            commandToExecute = os.platform() === 'win32' ? 'wmic logicaldisk get size,freespace,caption' : 'df -h';
+        } else if (userPrompt.includes("список процессов")) {
+            commandToExecute = os.platform() === 'win32' ? 'tasklist' : 'ps aux';
+        } else {
+            commandToExecute = `echo "AI could not determine a command for: ${userPrompt}"`;
+        }
+        console.log(`[AI Pass 1] Generated command: ${commandToExecute}`);
+        
+    } catch (error) {
+        console.error('AI API Error (Pass 1):', error);
+        ws.send(JSON.stringify({ type: 'pty', data: `\\r\\nAI Error during command generation: ${error.message}\\r\\n` }));
+        ws.send(JSON.stringify({ type: 'ai_done' }));
+        return;
+    }
+    
+    // --- Execute Command ---
+    ws.send(JSON.stringify({ type: 'pty', data: `\\r\\n> ${commandToExecute}\\r\\n` }));
+    
+    exec(commandToExecute, async (error, stdout, stderr) => {
+        const commandOutput = stdout + stderr;
+        // Send raw output to terminal
+        ws.send(JSON.stringify({ type: 'pty', data: commandOutput.replace(/\\n/g, '\\r\\n') }));
+
+        if (error) {
+            console.error(`Exec error: ${error}`);
+            ws.send(JSON.stringify({ type: 'ai_done' })); // Stop if command fails
+            return;
+        }
+
+        // --- AI Pass 2: Analyze the output ---
+        try {
+            // MOCK AI RESPONSE FOR DEMO
+            let analysisResult;
+             if (commandToExecute.startsWith("df -h") || commandToExecute.startsWith("wmic")) {
+                analysisResult = `Анализ вывода команды "${commandToExecute}":\\n\\nВсе дисковые разделы в норме. Основной раздел используется на 65%, что является приемлемым показателем. Никаких срочных действий не требуется.`;
+            } else {
+                analysisResult = `Анализ вывода команды "${commandToExecute}":\\n\\nКоманда была выполнена успешно. Проанализируйте вывод самостоятельно.`;
+            }
+            console.log(`[AI Pass 2] Generated analysis.`);
+
+            ws.send(JSON.stringify({ type: 'analysisResult', data: analysisResult }));
+        } catch (aiError) {
+            console.error('AI API Error (Pass 2):', aiError);
+            ws.send(JSON.stringify({ type: 'pty', data: `\\r\\nAI Error during analysis: ${aiError.message}\\r\\n` }));
+        } finally {
+            // Signal that the whole process is complete
+            ws.send(JSON.stringify({ type: 'ai_done' }));
+        }
+    });
 }
 
 module.exports = { attachWsServer };

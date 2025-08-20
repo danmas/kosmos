@@ -355,4 +355,14 @@ async function loop() {
 
 loop();
 
+// --- Modal Logic ---
+const aiIndicator = document.getElementById('ai-indicator');
+
+// Modal elements
+const aiModal = document.getElementById('ai-modal');
+const modalCloseBtn = document.querySelector('.modal-close-btn');
+const aiModalText = document.getElementById('ai-modal-text');
+
+let ws;
+
 

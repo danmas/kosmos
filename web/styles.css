@@ -59,4 +59,77 @@ body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Arial; backgro
 .terminal-input { border-top:1px solid #223055; padding:8px; }
 .terminal-input input { width:100%; padding:8px 10px; background:#0b1222; border:1px solid #223055; border-radius:8px; color:#e6ecff; }
 
+/* Modal styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #1a1a1d;
+    border: 1px solid #4b5263;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #4b5263;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #c9d1d9;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.25em;
+}
+
+.modal-close-btn {
+    color: #c9d1d9;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+    color: #fff;
+    text-decoration: none;
+}
+
+.modal-body {
+    padding: 20px;
+    color: #c9d1d9;
+    line-height: 1.6;
+}
+
+#ai-modal-text {
+    margin: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 
