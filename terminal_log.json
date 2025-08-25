@@ -1,129 +1,62 @@
 [
   {
-    "id": "c636be67-9f40-4443-aed5-d86b7e685b5f",
-    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
-    "timestamp": "2025-08-25T07:40:35.075Z",
+    "id": "0c3d057e-da51-4749-8563-bfe08efdea12",
+    "sessionId": "4800848a-e607-4693-bddc-797fcd7083be",
+    "timestamp": "2025-08-25T08:58:00.375Z",
     "type": "stdout",
-    "terminal_output": "Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.8.0-71-generic x86_64)\r\n\r\n * Documentation:  https://help.ubuntu.com\r\n * Management:     https://landscape.canonical.com\r\n * Support:        https://ubuntu.com/pro\r\n\r\n System information as of Mon Aug 25 07:39:47 UTC 2025\r\n\r\n  System load:  0.02               Processes:               237\r\n  Usage of /:   1.7% of 491.02GB   Users logged in:         0\r\n  Memory usage: 55%                IPv4 address for ens192: 87.251.79.241\r\n  Swap usage:   15%                IPv6 address for ens192: 2a0d:6c2:7:15::\r\n\r\n\r\nExpanded Security Maintenance for Applications is not enabled.\r\n\r\n3 updates can be applied immediately.\r\nTo see these additional updates run: apt list --upgradable\r\n\r\n1 additional security update can be applied with ESM Apps.\r\nLearn more about enabling ESM Apps service at https://ubuntu.com/esm\r\n\r\n\r\n*** System restart required ***\r\nLast login: Mon Aug 25 07:06:05 2025 from 194.190.114.197\r\r\n\u001b]0;root@ubuntu24: ~\u0007root@ubuntu24:~#"
+    "terminal_output": "Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.8.0-71-generic x86_64)\r\n\r\n * Documentation:  https://help.ubuntu.com\r\n * Management:     https://landscape.canonical.com\r\n * Support:        https://ubuntu.com/pro\r\n\r\n System information as of Mon Aug 25 08:57:47 UTC 2025\r\n\r\n  System load:  0.32               Processes:               239\r\n  Usage of /:   1.7% of 491.02GB   Users logged in:         1\r\n  Memory usage: 57%                IPv4 address for ens192: 87.251.79.241\r\n  Swap usage:   15%                IPv6 address for ens192: 2a0d:6c2:7:15::\r\n\r\n\r\nExpanded Security Maintenance for Applications is not enabled.\r\n\r\n3 updates can be applied immediately.\r\nTo see these additional updates run: apt list --upgradable\r\n\r\n1 additional security update can be applied with ESM Apps.\r\nLearn more about enabling ESM Apps service at https://ubuntu.com/esm\r\n\r\n\r\n*** System restart required ***\r\nLast login: Mon Aug 25 08:57:19 2025 from 194.190.114.197"
   },
   {
-    "id": "8c185f29-45e3-4b0f-aa4a-fa94077029d4",
-    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
-    "timestamp": "2025-08-25T07:40:45.188Z",
-    "type": "stdout",
-    "terminal_output": "зц \b\b\bpwd"
-  },
-  {
-    "id": "14db8a92-b58a-4fdb-8e92-56ac83e75f28",
-    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
-    "timestamp": "2025-08-25T07:40:45.258Z",
-    "type": "stdin",
-    "executed_command": "pwd"
-  },
-  {
-    "id": "4f1f648d-dae6-4c61-aadd-71c45c81fd85",
-    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
-    "timestamp": "2025-08-25T07:40:45.934Z",
-    "type": "stdout",
-    "terminal_output": "/root\r\n\u001b]0;root@ubuntu24: ~\u0007root@ubuntu24:~#"
-  },
-  {
-    "id": "767ea4ec-bde2-43f1-95be-5a43ea7dd99b",
-    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
-    "timestamp": "2025-08-25T07:41:10.925Z",
-    "type": "stdout",
-    "terminal_output": "ls -la"
-  },
-  {
-    "id": "e4725326-f294-4963-94a4-e57d0869f99b",
-    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
-    "timestamp": "2025-08-25T07:41:11.297Z",
+    "id": "c22eee52-a19e-445f-a60f-c4db5895794a",
+    "sessionId": "4800848a-e607-4693-bddc-797fcd7083be",
+    "timestamp": "2025-08-25T08:58:10.815Z",
     "type": "stdin",
     "executed_command": "ls -la"
   },
   {
-    "id": "65236672-eb14-489e-8f98-a0784b063ed2",
-    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
-    "timestamp": "2025-08-25T07:41:11.976Z",
+    "id": "ab028a3d-333d-4cc6-af71-6014f2ca0cc2",
+    "sessionId": "4800848a-e607-4693-bddc-797fcd7083be",
+    "timestamp": "2025-08-25T08:58:11.001Z",
     "type": "stdout",
-    "terminal_output": "total 68\r\ndrwx------ 11 root root 4096 Aug 12 16:45 .\r\ndrwxr-xr-x 24 root root 4096 Aug 20 09:23 ..\r\n-rw-r--r--  1 root root 9203 Aug 25 07:16 .bash_history\r\n-rw-r--r--  1 root root 3106 Apr 22  2024 .bashrc\r\ndrwx------  3 root root 4096 Jul 30 17:35 .cache\r\ndrwx------  4 root root 4096 Aug 13 16:41 .config\r\ndrwx------  3 root root 4096 Jul 30 17:35 .local\r\ndrwxr-xr-x  4 root root 4096 Jul 30 18:04 .npm\r\ndrwxr-xr-x  5 root root 4096 Aug 20 09:27 .pm2\r\n-rw-r--r--  1 root root  161 Apr 22  2024 .profile\r\n-rw-------  1 root root    0 Aug  5 18:02 .python_history\r\n-rw-r--r--  1 root root   66 Jul 30 17:48 .selected_editor\r\ndrwx------  2 root root 4096 Aug 19 06:20 .ssh\r\ndrwxr-xr-x  3 root root 4096 Aug 12 16:45 MYDATA\r\n-rw-r--r--  1 root root    0 Aug  5 17:53 git\r\ndrwxr-xr-x  7 root root 4096 Aug 20 06:47 projects-ex\r\ndrwxr-xr-x  4 root root 4096 Aug  9 16:11 searxng-docker\r\n\u001b]0;root@ubuntu24: ~\u0007root@ubuntu24:~#"
+    "terminal_output": "ls -la\r\n\rtotal 68\r\ndrwx------ 11 root root 4096 Aug 12 16:45 .\r\ndrwxr-xr-x 24 root root 4096 Aug 20 09:23 ..\r\n-rw-r--r--  1 root root 9236 Aug 25 08:56 .bash_history\r\n-rw-r--r--  1 root root 3106 Apr 22  2024 .bashrc\r\ndrwx------  3 root root 4096 Jul 30 17:35 .cache\r\ndrwx------  4 root root 4096 Aug 13 16:41 .config\r\ndrwx------  3 root root 4096 Jul 30 17:35 .local\r\ndrwxr-xr-x  4 root root 4096 Jul 30 18:04 .npm\r\ndrwxr-xr-x  5 root root 4096 Aug 20 09:27 .pm2\r\n-rw-r--r--  1 root root  161 Apr 22  2024 .profile\r\n-rw-------  1 root root    0 Aug  5 18:02 .python_history\r\n-rw-r--r--  1 root root   66 Jul 30 17:48 .selected_editor\r\ndrwx------  2 root root 4096 Aug 19 06:20 .ssh\r\ndrwxr-xr-x  3 root root 4096 Aug 12 16:45 MYDATA\r\n-rw-r--r--  1 root root    0 Aug  5 17:53 git\r\ndrwxr-xr-x  7 root root 4096 Aug 20 06:47 projects-ex\r\ndrwxr-xr-x  4 root root 4096 Aug  9 16:11 searxng-docker",
+    "stdin_id": "c22eee52-a19e-445f-a60f-c4db5895794a"
   },
   {
-    "id": "853a6a34-0cd4-4ef7-bbe7-4d4b3a5dcf34",
-    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
-    "timestamp": "2025-08-25T07:41:40.746Z",
-    "type": "stdout",
-    "terminal_output": "ai"
-  },
-  {
-    "id": "ab4b26fa-2e09-4f01-9d29-12d5904fa120",
-    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
-    "timestamp": "2025-08-25T07:41:41.539Z",
-    "type": "stdout",
-    "terminal_output": ":"
-  },
-  {
-    "id": "5ed44f0e-f90a-4514-b51c-8aca7bd41002",
-    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
-    "timestamp": "2025-08-25T07:41:43.945Z",
-    "type": "stdout",
-    "terminal_output": "cdj,."
-  },
-  {
-    "id": "dd68244c-c0af-47a9-b031-698653f41ce7",
-    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
-    "timestamp": "2025-08-25T07:41:45.219Z",
-    "type": "stdout",
-    "terminal_output": "\b\b"
-  },
-  {
-    "id": "e51b628a-329c-47df-a458-25b897dc02bc",
-    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
-    "timestamp": "2025-08-25T07:41:46.154Z",
-    "type": "stdout",
-    "terminal_output": "\b\b\b"
-  },
-  {
-    "id": "25a19b25-c726-4061-8fd2-2eacc97dd094",
-    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
-    "timestamp": "2025-08-25T07:41:47.428Z",
-    "type": "stdout",
-    "terminal_output": "c"
-  },
-  {
-    "id": "a5f5584f-b028-4dcb-83c3-7d08693b2cdb",
-    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
-    "timestamp": "2025-08-25T07:41:51.551Z",
-    "type": "stdout",
-    "terminal_output": "dj,jlyj \b\b\b\b\b\b\b\b\bсвободно на диске"
-  },
-  {
-    "id": "48124dc0-6b7c-4e05-97bc-c40e9e59b8ad",
-    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
-    "timestamp": "2025-08-25T07:41:51.769Z",
+    "id": "82a29c0c-0e7e-4cc5-a0c1-c3ed713f43ca",
+    "sessionId": "4800848a-e607-4693-bddc-797fcd7083be",
+    "timestamp": "2025-08-25T08:58:43.166Z",
     "type": "ai_query",
-    "user_ai_query": "свободно на диске"
+    "user_ai_query": "диски"
   },
   {
-    "id": "51683d9f-d826-4bfb-ae98-e23dcb9b28c3",
-    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
-    "timestamp": "2025-08-25T07:41:52.611Z",
-    "type": "stdout",
-    "terminal_output": "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\r\n\r\u001b]0;root@ubuntu24: ~\u0007root@ubuntu24:~#"
-  },
-  {
-    "id": "718054a5-9695-4896-a838-52b7d41cba2f",
-    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
-    "timestamp": "2025-08-25T07:41:55.789Z",
+    "id": "7d51aec2-1a9a-4170-af5f-7784d2aba0c7",
+    "sessionId": "4800848a-e607-4693-bddc-797fcd7083be",
+    "timestamp": "2025-08-25T08:58:45.786Z",
     "type": "stdin",
-    "executed_command": "df -h",
-    "user_ai_query": "свободно на диске"
+    "executed_command": "fdisk -l",
+    "user_ai_query": "диски",
+    "ai_query_id": "82a29c0c-0e7e-4cc5-a0c1-c3ed713f43ca"
   },
   {
-    "id": "28b0f368-bef2-4323-99ae-a4f1cf206931",
-    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
-    "timestamp": "2025-08-25T07:41:56.478Z",
+    "id": "4c408529-6376-4178-b103-0be3ccf400f5",
+    "sessionId": "4800848a-e607-4693-bddc-797fcd7083be",
+    "timestamp": "2025-08-25T08:58:46.143Z",
     "type": "stdout",
-    "terminal_output": "df -h\r\n\rFilesystem      Size  Used Avail Use% Mounted on\r\ntmpfs           197M  1.6M  196M   1% /run\r\nefivarfs        256K   43K  209K  17% /sys/firmware/efi/efivars\r\n/dev/sda3       492G  8.2G  458G   2% /\r\ntmpfs           984M     0  984M   0% /dev/shm\r\ntmpfs           5.0M     0  5.0M   0% /run/lock\r\n/dev/sda1       537M  6.2M  531M   2% /boot/efi\r\noverlay         492G  8.2G  458G   2% /var/lib/docker/overlay2/0a4fee7bad87c9538fbaba40d20bbdc3dc4ef8e98b17fffd00189f4a8901e932/merged\r\noverlay         492G  8.2G  458G   2% /var/lib/docker/overlay2/6e92cf2822bf953c96d5a3e62ba61ce9b8c1b952e393af54e3ea8f828acad80a/merged\r\noverlay         492G  8.2G  458G   2% /var/lib/docker/overlay2/5503baa5ac9905d75ba6fbb194697780f1f660b2ee137861ff8671b0b152cfe3/merged\r\ntmpfs           197M   12K  197M   1% /run/user/0\r\noverlay         492G  8.2G  458G   2% /var/lib/docker/overlay2/e1c2ef0eba2a84b30f3fbad889ecf4255802a456639fc7dfb65899468b08b60c/merged\r\n\u001b]0;root@ubuntu24: ~\u0007root@ubuntu24:~#"
+    "terminal_output": "fdisk -l\r\n\rGPT PMBR size mismatch (20971519 != 1048575999) will be corrected by write.\r\nDisk /dev/sda: 500 GiB, 536870912000 bytes, 1048576000 sectors\r\nDisk model: Virtual disk    \r\nUnits: sectors of 1 * 512 = 512 bytes\r\nSector size (logical/physical): 512 bytes / 512 bytes\r\nI/O size (minimum/optimal): 512 bytes / 512 bytes\r\nDisklabel type: gpt\r\nDisk identifier: 353BE4E9-3F38-441C-A3A6-75FC0A0BDB69\r\n\r\nDevice       Start        End    Sectors  Size Type\r\n/dev/sda1     2048    1103871    1101824  538M EFI System\r\n/dev/sda2  1103872    2127871    1024000  500M Linux swap\r\n/dev/sda3  2127872 1048575966 1046448095  499G Linux filesystem",
+    "stdin_id": "7d51aec2-1a9a-4170-af5f-7784d2aba0c7"
+  },
+  {
+    "id": "ee3bf72f-9747-43aa-9c05-1bc651eb214e",
+    "sessionId": "7ca367ca-f547-490d-8178-866c02cf2961",
+    "timestamp": "2025-08-25T09:00:12.961Z",
+    "type": "stdout",
+    "terminal_output": "Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.8.0-71-generic x86_64)\r\n\r\n * Documentation:  https://help.ubuntu.com\r\n * Management:     https://landscape.canonical.com\r\n * Support:        https://ubuntu.com/pro\r\n\r\n System information as of Mon Aug 25 09:00:02 UTC 2025\r\n\r\n  System load:  0.16               Processes:               237\r\n  Usage of /:   1.7% of 491.02GB   Users logged in:         0\r\n  Memory usage: 57%                IPv4 address for ens192: 87.251.79.241\r\n  Swap usage:   15%                IPv6 address for ens192: 2a0d:6c2:7:15::\r\n\r\n\r\nExpanded Security Maintenance for Applications is not enabled.\r\n\r\n3 updates can be applied immediately.\r\nTo see these additional updates run: apt list --upgradable\r\n\r\n1 additional security update can be applied with ESM Apps.\r\nLearn more about enabling ESM Apps service at https://ubuntu.com/esm\r\n\r\n\r\n*** System restart required ***\r\nLast login: Mon Aug 25 08:58:00 2025 from 194.190.114.197"
+  },
+  {
+    "id": "5ec5f7dd-9ae8-47d5-8dba-306130c653f4",
+    "sessionId": "aed5927f-33bf-49ae-8a6e-29fdc8591ead",
+    "timestamp": "2025-08-25T09:00:34.417Z",
+    "type": "stdout",
+    "terminal_output": "Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.8.0-71-generic x86_64)\r\n\r\n * Documentation:  https://help.ubuntu.com\r\n * Management:     https://landscape.canonical.com\r\n * Support:        https://ubuntu.com/pro\r\n\r\n System information as of Mon Aug 25 09:00:02 UTC 2025\r\n\r\n  System load:  0.16               Processes:               237\r\n  Usage of /:   1.7% of 491.02GB   Users logged in:         0\r\n  Memory usage: 57%                IPv4 address for ens192: 87.251.79.241\r\n  Swap usage:   15%                IPv6 address for ens192: 2a0d:6c2:7:15::\r\n\r\n\r\nExpanded Security Maintenance for Applications is not enabled.\r\n\r\n3 updates can be applied immediately.\r\nTo see these additional updates run: apt list --upgradable\r\n\r\n1 additional security update can be applied with ESM Apps.\r\nLearn more about enabling ESM Apps service at https://ubuntu.com/esm\r\n\r\n\r\n*** System restart required ***\r\nLast login: Mon Aug 25 09:00:12 2025 from 194.190.114.197"
   }
 ]
