@@ -1,213 +1,129 @@
 [
   {
-    "id": "7f795a9e-488a-4e04-bf2e-cd6066d2370e",
-    "sessionId": "a6e7dc57-a339-4265-b925-6bba9e8f3d70",
-    "timestamp": "2025-08-21T08:06:35.031Z",
+    "id": "c636be67-9f40-4443-aed5-d86b7e685b5f",
+    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
+    "timestamp": "2025-08-25T07:40:35.075Z",
     "type": "stdout",
-    "terminal_output": "Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.8.0-71-generic x86_64)\r\n\r\n * Documentation:  https://help.ubuntu.com\r\n * Management:     https://landscape.canonical.com\r\n * Support:        https://ubuntu.com/pro\r\n\r\n System information as of Thu Aug 21 08:05:45 UTC 2025\r\n\r\n  System load:  0.06               Processes:               229\r\n  Usage of /:   1.5% of 491.02GB   Users logged in:         0\r\n  Memory usage: 46%                IPv4 address for ens192: 87.251.79.241\r\n  Swap usage:   27%                IPv6 address for ens192: 2a0d:6c2:7:15::\r\n\r\n * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s\r\n   just raised the bar for easy, resilient and secure K8s cluster deployment.\r\n\r\n   https://ubuntu.com/engage/secure-kubernetes-at-the-edge\r\n\r\nExpanded Security Maintenance for Applications is not enabled.\r\n\r\n3 updates can be applied immediately.\r\nTo see these additional updates run: apt list --upgradable\r\n\r\n1 additional security update can be applied with ESM Apps.\r\nLearn more about enabling ESM Apps service at https://ubuntu.com/esm\r\n\r\n\r\n*** System restart required ***\r\nLast login: Thu Aug 21 07:36:24 2025 from 194.190.114.197\r\r\n\u001b]0;root@ubuntu24: ~\u0007root@ubuntu24:~# \r\n\r\u001b]0;root@ubuntu24: ~\u0007root@ubuntu24:~# \r\n\r\u001b]0;root@ubuntu24: ~\u0007root@ubuntu24:~# ls -la\b\b\b\b\b\bды\b\b\b\b\b\bls\b\b\b\b\b\b\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007фшЖ \b\b\b\bai: disk"
+    "terminal_output": "Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.8.0-71-generic x86_64)\r\n\r\n * Documentation:  https://help.ubuntu.com\r\n * Management:     https://landscape.canonical.com\r\n * Support:        https://ubuntu.com/pro\r\n\r\n System information as of Mon Aug 25 07:39:47 UTC 2025\r\n\r\n  System load:  0.02               Processes:               237\r\n  Usage of /:   1.7% of 491.02GB   Users logged in:         0\r\n  Memory usage: 55%                IPv4 address for ens192: 87.251.79.241\r\n  Swap usage:   15%                IPv6 address for ens192: 2a0d:6c2:7:15::\r\n\r\n\r\nExpanded Security Maintenance for Applications is not enabled.\r\n\r\n3 updates can be applied immediately.\r\nTo see these additional updates run: apt list --upgradable\r\n\r\n1 additional security update can be applied with ESM Apps.\r\nLearn more about enabling ESM Apps service at https://ubuntu.com/esm\r\n\r\n\r\n*** System restart required ***\r\nLast login: Mon Aug 25 07:06:05 2025 from 194.190.114.197\r\r\n\u001b]0;root@ubuntu24: ~\u0007root@ubuntu24:~#"
   },
   {
-    "id": "392e5faa-e944-4632-9840-6291e2c65a27",
-    "sessionId": "a6e7dc57-a339-4265-b925-6bba9e8f3d70",
-    "timestamp": "2025-08-21T08:06:35.031Z",
+    "id": "8c185f29-45e3-4b0f-aa4a-fa94077029d4",
+    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
+    "timestamp": "2025-08-25T07:40:45.188Z",
+    "type": "stdout",
+    "terminal_output": "зц \b\b\bpwd"
+  },
+  {
+    "id": "14db8a92-b58a-4fdb-8e92-56ac83e75f28",
+    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
+    "timestamp": "2025-08-25T07:40:45.258Z",
+    "type": "stdin",
+    "executed_command": "pwd"
+  },
+  {
+    "id": "4f1f648d-dae6-4c61-aadd-71c45c81fd85",
+    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
+    "timestamp": "2025-08-25T07:40:45.934Z",
+    "type": "stdout",
+    "terminal_output": "/root\r\n\u001b]0;root@ubuntu24: ~\u0007root@ubuntu24:~#"
+  },
+  {
+    "id": "767ea4ec-bde2-43f1-95be-5a43ea7dd99b",
+    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
+    "timestamp": "2025-08-25T07:41:10.925Z",
+    "type": "stdout",
+    "terminal_output": "ls -la"
+  },
+  {
+    "id": "e4725326-f294-4963-94a4-e57d0869f99b",
+    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
+    "timestamp": "2025-08-25T07:41:11.297Z",
+    "type": "stdin",
+    "executed_command": "ls -la"
+  },
+  {
+    "id": "65236672-eb14-489e-8f98-a0784b063ed2",
+    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
+    "timestamp": "2025-08-25T07:41:11.976Z",
+    "type": "stdout",
+    "terminal_output": "total 68\r\ndrwx------ 11 root root 4096 Aug 12 16:45 .\r\ndrwxr-xr-x 24 root root 4096 Aug 20 09:23 ..\r\n-rw-r--r--  1 root root 9203 Aug 25 07:16 .bash_history\r\n-rw-r--r--  1 root root 3106 Apr 22  2024 .bashrc\r\ndrwx------  3 root root 4096 Jul 30 17:35 .cache\r\ndrwx------  4 root root 4096 Aug 13 16:41 .config\r\ndrwx------  3 root root 4096 Jul 30 17:35 .local\r\ndrwxr-xr-x  4 root root 4096 Jul 30 18:04 .npm\r\ndrwxr-xr-x  5 root root 4096 Aug 20 09:27 .pm2\r\n-rw-r--r--  1 root root  161 Apr 22  2024 .profile\r\n-rw-------  1 root root    0 Aug  5 18:02 .python_history\r\n-rw-r--r--  1 root root   66 Jul 30 17:48 .selected_editor\r\ndrwx------  2 root root 4096 Aug 19 06:20 .ssh\r\ndrwxr-xr-x  3 root root 4096 Aug 12 16:45 MYDATA\r\n-rw-r--r--  1 root root    0 Aug  5 17:53 git\r\ndrwxr-xr-x  7 root root 4096 Aug 20 06:47 projects-ex\r\ndrwxr-xr-x  4 root root 4096 Aug  9 16:11 searxng-docker\r\n\u001b]0;root@ubuntu24: ~\u0007root@ubuntu24:~#"
+  },
+  {
+    "id": "853a6a34-0cd4-4ef7-bbe7-4d4b3a5dcf34",
+    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
+    "timestamp": "2025-08-25T07:41:40.746Z",
+    "type": "stdout",
+    "terminal_output": "ai"
+  },
+  {
+    "id": "ab4b26fa-2e09-4f01-9d29-12d5904fa120",
+    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
+    "timestamp": "2025-08-25T07:41:41.539Z",
+    "type": "stdout",
+    "terminal_output": ":"
+  },
+  {
+    "id": "5ed44f0e-f90a-4514-b51c-8aca7bd41002",
+    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
+    "timestamp": "2025-08-25T07:41:43.945Z",
+    "type": "stdout",
+    "terminal_output": "cdj,."
+  },
+  {
+    "id": "dd68244c-c0af-47a9-b031-698653f41ce7",
+    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
+    "timestamp": "2025-08-25T07:41:45.219Z",
+    "type": "stdout",
+    "terminal_output": "\b\b"
+  },
+  {
+    "id": "e51b628a-329c-47df-a458-25b897dc02bc",
+    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
+    "timestamp": "2025-08-25T07:41:46.154Z",
+    "type": "stdout",
+    "terminal_output": "\b\b\b"
+  },
+  {
+    "id": "25a19b25-c726-4061-8fd2-2eacc97dd094",
+    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
+    "timestamp": "2025-08-25T07:41:47.428Z",
+    "type": "stdout",
+    "terminal_output": "c"
+  },
+  {
+    "id": "a5f5584f-b028-4dcb-83c3-7d08693b2cdb",
+    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
+    "timestamp": "2025-08-25T07:41:51.551Z",
+    "type": "stdout",
+    "terminal_output": "dj,jlyj \b\b\b\b\b\b\b\b\bсвободно на диске"
+  },
+  {
+    "id": "48124dc0-6b7c-4e05-97bc-c40e9e59b8ad",
+    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
+    "timestamp": "2025-08-25T07:41:51.769Z",
     "type": "ai_query",
-    "user_ai_query": "disk"
+    "user_ai_query": "свободно на диске"
   },
   {
-    "id": "e84b41a1-2513-4fd0-afd5-798999404182",
-    "sessionId": "a6e7dc57-a339-4265-b925-6bba9e8f3d70",
-    "timestamp": "2025-08-21T08:06:39.149Z",
+    "id": "51683d9f-d826-4bfb-ae98-e23dcb9b28c3",
+    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
+    "timestamp": "2025-08-25T07:41:52.611Z",
+    "type": "stdout",
+    "terminal_output": "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\r\n\r\u001b]0;root@ubuntu24: ~\u0007root@ubuntu24:~#"
+  },
+  {
+    "id": "718054a5-9695-4896-a838-52b7d41cba2f",
+    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
+    "timestamp": "2025-08-25T07:41:55.789Z",
     "type": "stdin",
     "executed_command": "df -h",
-    "user_ai_query": "disk"
+    "user_ai_query": "свободно на диске"
   },
   {
-    "id": "33edec4f-92ab-4f84-a4e9-32e530844f12",
-    "sessionId": "a6e7dc57-a339-4265-b925-6bba9e8f3d70",
-    "timestamp": "2025-08-21T08:07:11.043Z",
+    "id": "28b0f368-bef2-4323-99ae-a4f1cf206931",
+    "sessionId": "0272c479-3f01-44fa-9e90-370af3f23f57",
+    "timestamp": "2025-08-25T07:41:56.478Z",
     "type": "stdout",
-    "terminal_output": "s\b\b\b\b\b\b\b\b\b\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\r\n\r\u001b]0;root@ubuntu24: ~\u0007root@ubuntu24:~# df -h\r\n\rFilesystem      Size  Used Avail Use% Mounted on\r\ntmpfs           197M  1.6M  196M   1% /run\r\nefivarfs        256K   43K  209K  17% /sys/firmware/efi/efivars\r\n/dev/sda3       492G  7.7G  459G   2% /\r\ntmpfs           984M     0  984M   0% /dev/shm\r\ntmpfs           5.0M     0  5.0M   0% /run/lock\r\n/dev/sda1       537M  6.2M  531M   2% /boot/efi\r\noverlay         492G  7.7G  459G   2% /var/lib/docker/overlay2/0a4fee7bad87c9538fbaba40d20bbdc3dc4ef8e98b17fffd00189f4a8901e932/merged\r\noverlay         492G  7.7G  459G   2% /var/lib/docker/overlay2/6e92cf2822bf953c96d5a3e62ba61ce9b8c1b952e393af54e3ea8f828acad80a/merged\r\noverlay         492G  7.7G  459G   2% /var/lib/docker/overlay2/e1c2ef0eba2a84b30f3fbad889ecf4255802a456639fc7dfb65899468b08b60c/merged\r\noverlay         492G  7.7G  459G   2% /var/lib/docker/overlay2/5503baa5ac9905d75ba6fbb194697780f1f660b2ee137861ff8671b0b152cfe3/merged\r\ntmpfs           197M   12K  197M   1% /run/user/0\r\n\u001b]0;root@ubuntu24: ~\u0007root@ubuntu24:~# ls -la\r\n\rtotal 68\r\ndrwx------ 11 root root 4096 Aug 12 16:45 .\r\ndrwxr-xr-x 24 root root 4096 Aug 20 09:23 ..\r\n-rw-r--r--  1 root root 9094 Aug 21 07:54 .bash_history\r\n-rw-r--r--  1 root root 3106 Apr 22  2024 .bashrc\r\ndrwx------  3 root root 4096 Jul 30 17:35 .cache\r\ndrwx------  4 root root 4096 Aug 13 16:41 .config\r\ndrwx------  3 root root 4096 Jul 30 17:35 .local\r\ndrwxr-xr-x  4 root root 4096 Jul 30 18:04 .npm\r\ndrwxr-xr-x  5 root root 4096 Aug 20 09:27 .pm2\r\n-rw-r--r--  1 root root  161 Apr 22  2024 .profile\r\n-rw-------  1 root root    0 Aug  5 18:02 .python_history\r\n-rw-r--r--  1 root root   66 Jul 30 17:48 .selected_editor\r\ndrwx------  2 root root 4096 Aug 19 06:20 .ssh\r\ndrwxr-xr-x  3 root root 4096 Aug 12 16:45 MYDATA\r\n-rw-r--r--  1 root root    0 Aug  5 17:53 git\r\ndrwxr-xr-x  7 root root 4096 Aug 20 06:47 projects-ex\r\ndrwxr-xr-x  4 root root 4096 Aug  9 16:11 searxng-docker\r\n\u001b]0;root@ubuntu24: ~\u0007root@ubuntu24:~# ai: lbh \b\b\b\bдир"
-  },
-  {
-    "id": "7722140b-9330-4ae7-93d2-42907d47f430",
-    "sessionId": "a6e7dc57-a339-4265-b925-6bba9e8f3d70",
-    "timestamp": "2025-08-21T08:07:11.043Z",
-    "type": "ai_query",
-    "user_ai_query": "дир"
-  },
-  {
-    "id": "8c945551-7ed6-4673-9396-f1aede1df28d",
-    "sessionId": "a6e7dc57-a339-4265-b925-6bba9e8f3d70",
-    "timestamp": "2025-08-21T08:07:14.058Z",
-    "type": "stdin",
-    "executed_command": "cd",
-    "user_ai_query": "дир"
-  },
-  {
-    "id": "ebdc013e-0d36-4751-a177-d06870748260",
-    "sessionId": "57017550-4e4a-4698-8936-286da49f9863",
-    "timestamp": "2025-08-21T08:12:30.395Z",
-    "type": "stdout",
-    "terminal_output": "Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.8.0-71-generic x86_64)\r\n\r\n * Documentation:  https://help.ubuntu.com\r\n * Management:     https://landscape.canonical.com\r\n * Support:        https://ubuntu.com/pro\r\n\r\n System information as of Thu Aug 21 08:11:46 UTC 2025\r\n\r\n  System load:  0.08               Processes:               234\r\n  Usage of /:   1.5% of 491.02GB   Users logged in:         1\r\n  Memory usage: 47%                IPv4 address for ens192: 87.251.79.241\r\n  Swap usage:   27%                IPv6 address for ens192: 2a0d:6c2:7:15::\r\n\r\n * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s\r\n   just raised the bar for easy, resilient and secure K8s cluster deployment.\r\n\r\n   https://ubuntu.com/engage/secure-kubernetes-at-the-edge\r\n\r\nExpanded Security Maintenance for Applications is not enabled.\r\n\r\n3 updates can be applied immediately.\r\nTo see these additional updates run: apt list --upgradable\r\n\r\n1 additional security update can be applied with ESM Apps.\r\nLearn more about enabling ESM Apps service at https://ubuntu.com/esm\r\n\r\n\r\n*** System restart required ***\r\nLast login: Thu Aug 21 08:06:19 2025 from 194.190.114.197\r\r\n\u001b]0;root@ubuntu24: ~\u0007root@ubuntu24:~# фшЖ \b\b\b\bai: lbcr \b\b\b\b\bдиск"
-  },
-  {
-    "id": "b7ba2e13-fc9a-46d7-96cd-6f2df2bfbeef",
-    "sessionId": "57017550-4e4a-4698-8936-286da49f9863",
-    "timestamp": "2025-08-21T08:12:30.395Z",
-    "type": "ai_query",
-    "user_ai_query": "диск"
-  },
-  {
-    "id": "c4f99ad8-f11a-4fd0-8923-2f3055c22f02",
-    "sessionId": "57017550-4e4a-4698-8936-286da49f9863",
-    "timestamp": "2025-08-21T08:12:36.153Z",
-    "type": "stdin",
-    "executed_command": "df -h",
-    "user_ai_query": "диск"
-  },
-  {
-    "id": "0b14710d-9952-4b15-a713-0b75d27ee8b4",
-    "sessionId": "57017550-4e4a-4698-8936-286da49f9863",
-    "timestamp": "2025-08-21T08:13:09.312Z",
-    "type": "stdout",
-    "terminal_output": "\b\b\b\b\b\b\b\b\b\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\r\n\r\u001b]0;root@ubuntu24: ~\u0007root@ubuntu24:~# df -h\r\n\rFilesystem      Size  Used Avail Use% Mounted on\r\ntmpfs           197M  1.6M  196M   1% /run\r\nefivarfs        256K   43K  209K  17% /sys/firmware/efi/efivars\r\n/dev/sda3       492G  7.7G  459G   2% /\r\ntmpfs           984M     0  984M   0% /dev/shm\r\ntmpfs           5.0M     0  5.0M   0% /run/lock\r\n/dev/sda1       537M  6.2M  531M   2% /boot/efi\r\noverlay         492G  7.7G  459G   2% /var/lib/docker/overlay2/0a4fee7bad87c9538fbaba40d20bbdc3dc4ef8e98b17fffd00189f4a8901e932/merged\r\noverlay         492G  7.7G  459G   2% /var/lib/docker/overlay2/6e92cf2822bf953c96d5a3e62ba61ce9b8c1b952e393af54e3ea8f828acad80a/merged\r\noverlay         492G  7.7G  459G   2% /var/lib/docker/overlay2/e1c2ef0eba2a84b30f3fbad889ecf4255802a456639fc7dfb65899468b08b60c/merged\r\noverlay         492G  7.7G  459G   2% /var/lib/docker/overlay2/5503baa5ac9905d75ba6fbb194697780f1f660b2ee137861ff8671b0b152cfe3/merged\r\ntmpfs           197M   12K  197M   1% /run/user/0\r\n\u001b]0;root@ubuntu24: ~\u0007root@ubuntu24:~# \r\n\r\u001b]0;root@ubuntu24: ~\u0007root@ubuntu24:~# \r\n\r\u001b]0;root@ubuntu24: ~\u0007root@ubuntu24:~# \r\n\r\u001b]0;root@ubuntu24: ~\u0007root@ubuntu24:~# фшЖ \b\b\b\bai: cdj,jlyj \b\b\b\b\b\b\b\b\bсвободно на дисках"
-  },
-  {
-    "id": "4e030744-e747-4d5d-b27e-67441a1a46de",
-    "sessionId": "57017550-4e4a-4698-8936-286da49f9863",
-    "timestamp": "2025-08-21T08:13:09.312Z",
-    "type": "ai_query",
-    "user_ai_query": "свободно на дисках"
-  },
-  {
-    "id": "041ef8d0-5090-44ee-9f27-94450cb8fe28",
-    "sessionId": "57017550-4e4a-4698-8936-286da49f9863",
-    "timestamp": "2025-08-21T08:13:12.960Z",
-    "type": "stdin",
-    "executed_command": "df -h",
-    "user_ai_query": "свободно на дисках"
-  },
-  {
-    "id": "8383fc63-bd51-4a32-adc5-34f3ba87bf0d",
-    "sessionId": "57017550-4e4a-4698-8936-286da49f9863",
-    "timestamp": "2025-08-21T08:14:33.799Z",
-    "type": "stdout",
-    "terminal_output": "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\r\n\r\u001b]0;root@ubuntu24: ~\u0007root@ubuntu24:~# df -h\r\n\rFilesystem      Size  Used Avail Use% Mounted on\r\ntmpfs           197M  1.6M  196M   1% /run\r\nefivarfs        256K   43K  209K  17% /sys/firmware/efi/efivars\r\n/dev/sda3       492G  7.7G  459G   2% /\r\ntmpfs           984M     0  984M   0% /dev/shm\r\ntmpfs           5.0M     0  5.0M   0% /run/lock\r\n/dev/sda1       537M  6.2M  531M   2% /boot/efi\r\noverlay         492G  7.7G  459G   2% /var/lib/docker/overlay2/0a4fee7bad87c9538fbaba40d20bbdc3dc4ef8e98b17fffd00189f4a8901e932/merged\r\noverlay         492G  7.7G  459G   2% /var/lib/docker/overlay2/6e92cf2822bf953c96d5a3e62ba61ce9b8c1b952e393af54e3ea8f828acad80a/merged\r\noverlay         492G  7.7G  459G   2% /var/lib/docker/overlay2/e1c2ef0eba2a84b30f3fbad889ecf4255802a456639fc7dfb65899468b08b60c/merged\r\noverlay         492G  7.7G  459G   2% /var/lib/docker/overlay2/5503baa5ac9905d75ba6fbb194697780f1f660b2ee137861ff8671b0b152cfe3/merged\r\ntmpfs           197M   12K  197M   1% /run/user/0\r\n\u001b]0;root@ubuntu24: ~\u0007root@ubuntu24:~#"
-  },
-  {
-    "id": "ac995fa9-4cc0-4e37-8078-2b5f050ed536",
-    "sessionId": "8fee3447-ac26-406f-95fe-0321ba0413d7",
-    "timestamp": "2025-08-21T08:16:24.475Z",
-    "type": "stdout",
-    "terminal_output": "Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.8.0-71-generic x86_64)\r\n\r\n * Documentation:  https://help.ubuntu.com\r\n * Management:     https://landscape.canonical.com\r\n * Support:        https://ubuntu.com/pro\r\n\r\n System information as of Thu Aug 21 08:15:01 UTC 2025\r\n\r\n  System load:  0.12               Processes:               230\r\n  Usage of /:   1.5% of 491.02GB   Users logged in:         0\r\n  Memory usage: 48%                IPv4 address for ens192: 87.251.79.241\r\n  Swap usage:   27%                IPv6 address for ens192: 2a0d:6c2:7:15::\r\n\r\n * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s\r\n   just raised the bar for easy, resilient and secure K8s cluster deployment.\r\n\r\n   https://ubuntu.com/engage/secure-kubernetes-at-the-edge\r\n\r\nExpanded Security Maintenance for Applications is not enabled.\r\n\r\n3 updates can be applied immediately.\r\nTo see these additional updates run: apt list --upgradable\r\n\r\n1 additional security update can be applied with ESM Apps.\r\nLearn more about enabling ESM Apps service at https://ubuntu.com/esm\r\n\r\n\r\n*** System restart required ***\r\nLast login: Thu Aug 21 08:12:17 2025 from 194.190.114.197\r\r\n\u001b]0;root@ubuntu24: ~\u0007root@ubuntu24:~# ды -дф\b\b\b\b\b\b\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007la -la\r\n\rtotal 68\r\ndrwx------ 11 root root 4096 Aug 12 16:45 .\r\ndrwxr-xr-x 24 root root 4096 Aug 20 09:23 ..\r\n-rw-r--r--  1 root root 9116 Aug 21 08:14 .bash_history\r\n-rw-r--r--  1 root root 3106 Apr 22  2024 .bashrc\r\ndrwx------  3 root root 4096 Jul 30 17:35 .cache\r\ndrwx------  4 root root 4096 Aug 13 16:41 .config\r\ndrwx------  3 root root 4096 Jul 30 17:35 .local\r\ndrwxr-xr-x  4 root root 4096 Jul 30 18:04 .npm\r\ndrwxr-xr-x  5 root root 4096 Aug 20 09:27 .pm2\r\n-rw-r--r--  1 root root  161 Apr 22  2024 .profile\r\n-rw-------  1 root root    0 Aug  5 18:02 .python_history\r\n-rw-r--r--  1 root root   66 Jul 30 17:48 .selected_editor\r\ndrwx------  2 root root 4096 Aug 19 06:20 .ssh\r\ndrwxr-xr-x  3 root root 4096 Aug 12 16:45 MYDATA\r\n-rw-r--r--  1 root root    0 Aug  5 17:53 git\r\ndrwxr-xr-x  7 root root 4096 Aug 20 06:47 projects-ex\r\ndrwxr-xr-x  4 root root 4096 Aug  9 16:11 searxng-docker\r\n\u001b]0;root@ubuntu24: ~\u0007root@ubuntu24:~# ai: lbcrb \b\b\b\b\b\bдиски"
-  },
-  {
-    "id": "a8a027a6-5c2e-4797-bb55-641305c7e085",
-    "sessionId": "8fee3447-ac26-406f-95fe-0321ba0413d7",
-    "timestamp": "2025-08-21T08:16:24.475Z",
-    "type": "ai_query",
-    "user_ai_query": "диски"
-  },
-  {
-    "id": "568edf59-0e2c-4a1c-a025-fce11a256be1",
-    "sessionId": "8fee3447-ac26-406f-95fe-0321ba0413d7",
-    "timestamp": "2025-08-21T08:16:30.110Z",
-    "type": "stdin",
-    "executed_command": "df -h",
-    "user_ai_query": "диски"
-  },
-  {
-    "id": "ab256fac-549e-4c93-a376-dd9ad3503e6e",
-    "sessionId": "8fee3447-ac26-406f-95fe-0321ba0413d7",
-    "timestamp": "2025-08-21T08:18:52.947Z",
-    "type": "stdout",
-    "terminal_output": "\b\b\b\b\b\b\b\b\b\b\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\u0007\r\n\r\u001b]0;root@ubuntu24: ~\u0007root@ubuntu24:~# df -h\r\n\rFilesystem      Size  Used Avail Use% Mounted on\r\ntmpfs           197M  1.6M  196M   1% /run\r\nefivarfs        256K   43K  209K  17% /sys/firmware/efi/efivars\r\n/dev/sda3       492G  7.7G  459G   2% /\r\ntmpfs           984M     0  984M   0% /dev/shm\r\ntmpfs           5.0M     0  5.0M   0% /run/lock\r\n/dev/sda1       537M  6.2M  531M   2% /boot/efi\r\noverlay         492G  7.7G  459G   2% /var/lib/docker/overlay2/0a4fee7bad87c9538fbaba40d20bbdc3dc4ef8e98b17fffd00189f4a8901e932/merged\r\noverlay         492G  7.7G  459G   2% /var/lib/docker/overlay2/6e92cf2822bf953c96d5a3e62ba61ce9b8c1b952e393af54e3ea8f828acad80a/merged\r\noverlay         492G  7.7G  459G   2% /var/lib/docker/overlay2/e1c2ef0eba2a84b30f3fbad889ecf4255802a456639fc7dfb65899468b08b60c/merged\r\noverlay         492G  7.7G  459G   2% /var/lib/docker/overlay2/5503baa5ac9905d75ba6fbb194697780f1f660b2ee137861ff8671b0b152cfe3/merged\r\ntmpfs           197M   12K  197M   1% /run/user/0\r\n\u001b]0;root@ubuntu24: ~\u0007root@ubuntu24:~#"
-  },
-  {
-    "id": "07fb37c5-a338-4b24-b44d-9fca6e901c85",
-    "sessionId": "67530555-46bc-4021-9c23-02fa4687d72a",
-    "timestamp": "2025-08-21T08:19:56.919Z",
-    "type": "stdout",
-    "terminal_output": "Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-205-generic x86_64)\r\n\r\n * Documentation:  https://help.ubuntu.com\r\n * Management:     https://landscape.canonical.com\r\n * Support:        https://ubuntu.com/pro\r\n\r\n1 device has a firmware upgrade available.\r\nRun `fwupdmgr get-upgrades` for more information.\r\n\r\n\r\nExpanded Security Maintenance for Infrastructure is enabled.\r\n\r\n248 updates can be applied immediately.\r\n97 of these updates are ESM Infra security updates.\r\n39 of these updates are standard security updates.\r\nTo see these additional updates run: apt list --upgradable\r\n\r\nUbuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by\r\napplicable law.\r\n\r\nNew release '22.04.5 LTS' available.\r\nRun 'do-release-upgrade' to upgrade to it.\r\n\r\n\r\n4 updates could not be installed automatically. For more details,\r\nsee /var/log/unattended-upgrades/unattended-upgrades.log\r\n*** System restart required ***\r\nYou have mail.\r\nLast login: Wed Aug 20 21:22:18 2025 from 192.168.1.7\r\r\n~ $ фшЖ \b\b\b\bai: lbcrb \b\b\b\b\b\bдиски"
-  },
-  {
-    "id": "6c28b930-abf8-475a-ac1a-ba163af12a18",
-    "sessionId": "67530555-46bc-4021-9c23-02fa4687d72a",
-    "timestamp": "2025-08-21T08:19:56.919Z",
-    "type": "ai_query",
-    "user_ai_query": "диски"
-  },
-  {
-    "id": "abf4eeca-9c58-45ce-a6eb-5ba25dac49a4",
-    "sessionId": "67530555-46bc-4021-9c23-02fa4687d72a",
-    "timestamp": "2025-08-21T08:19:59.544Z",
-    "type": "stdin",
-    "executed_command": "df -h",
-    "user_ai_query": "диски"
-  },
-  {
-    "id": "f2a4873a-421e-482e-aa5e-446d8ee1fefb",
-    "sessionId": "67530555-46bc-4021-9c23-02fa4687d72a",
-    "timestamp": "2025-08-21T08:20:57.428Z",
-    "type": "stdout",
-    "terminal_output": "\b\b\b\b\b\b\b\b\b\b\u0007\u0007\u0007\u0007\r\n~ $ df -h\r\nFilesystem      Size  Used Avail Use% Mounted on\r\nudev             62G     0   62G   0% /dev\r\ntmpfs            13G   13M   13G   1% /run\r\n/dev/sdb2       3,3T  2,5T  629G  81% /\r\ntmpfs            62G  1,2M   62G   1% /dev/shm\r\ntmpfs           5,0M     0  5,0M   0% /run/lock\r\ntmpfs            62G     0   62G   0% /sys/fs/cgroup\r\n/dev/loop11     128K  128K     0 100% /snap/bare/5\r\n/dev/loop1       22M   22M     0 100% /snap/bashtop/504\r\n/dev/loop2       22M   22M     0 100% /snap/bashtop/502\r\n/dev/loop13     165M  165M     0 100% /snap/gnome-3-28-1804/194\r\n/dev/loop24      82M   82M     0 100% /snap/gtk-common-themes/1534\r\n/dev/loop17     350M  350M     0 100% /snap/gnome-3-38-2004/140\r\n/dev/loop16     350M  350M     0 100% /snap/gnome-3-38-2004/143\r\n/dev/loop29     1,2G  1,2G     0 100% /snap/stuntrally/169\r\n/dev/loop15     165M  165M     0 100% /snap/gnome-3-28-1804/198\r\n/dev/loop25      92M   92M     0 100% /snap/gtk-common-themes/1535\r\n/dev/loop20     506M  506M     0 100% /snap/gnome-42-2204/176\r\n/dev/loop18     517M  517M     0 100% /snap/gnome-42-2204/202\r\n/dev/loop31     318M  318M     0 100% /snap/trigger-rally-ogra/10\r\n/dev/loop28     943M  943M     0 100% /snap/stuntrally/23\r\n/dev/sde1        13T  9,9T  2,2T  82% /_backup\r\n/dev/sdc1        13T  9,5T  2,6T  80% /_last\r\n/dev/sdd1        13T  1,1M   12T   1% /_new\r\ntmpfs            13G  8,0K   13G   1% /run/user/1002\r\ntmpfs            13G  4,0K   13G   1% /run/user/1000\r\ntmpfs            13G  4,0K   13G   1% /run/user/126\r\n/dev/loop5      405M  405M     0 100% /snap/gnome-46-2404/90\r\n/dev/loop10      69M   69M     0 100% /snap/cups/1085\r\n/dev/loop36      68M   68M     0 100% /snap/cups/1100\r\ntmpfs            13G     0   13G   0% /run/user/0\r\n/dev/loop33      64M   64M     0 100% /snap/core20/2582\r\nunionfs          38T   20T   17T  54% /backup\r\n/dev/loop4       64M   64M     0 100% /snap/core20/2599\r\n/dev/loop9       51M   51M     0 100% /snap/snapd/24718\r\n/dev/loop35      67M   67M     0 100% /snap/core24/1006\r\n/dev/loop3      291M  291M     0 100% /snap/mesa-2404/887\r\n/dev/loop32     590M  590M     0 100% /snap/gnome-46-2404/117\r\n/dev/loop12      74M   74M     0 100% /snap/core22/2045\r\n/dev/loop26      50M   50M     0 100% /snap/snapd/24792\r\n/dev/loop22      67M   67M     0 100% /snap/core24/1055\r\n/dev/loop23      73M   73M     0 100% /snap/snapcraft/15369\r\n/dev/loop34      56M   56M     0 100% /snap/core18/2923\r\n/dev/loop27     185M  185M     0 100% /snap/chromium/3203\r\n/dev/sdh         13T  3,1T  9,0T  26% /x\r\n/dev/loop21      56M   56M     0 100% /snap/core18/2934\r\n/dev/loop14     291M  291M     0 100% /snap/mesa-2404/912\r\n/dev/loop0      184M  184M     0 100% /snap/chromium/3217\r\n/dev/loop6       15M   15M     0 100% /snap/arduino-cli/60\r\n/dev/loop37      15M   15M     0 100% /snap/arduino-cli/62\r\ntmpfs            13G  8,0K   13G   1% /run/user/1001\r\n/dev/loop38      73M   73M     0 100% /snap/snapcraft/15600\r\n/dev/loop30      74M   74M     0 100% /snap/core22/2082\r\n~ $"
-  },
-  {
-    "id": "cee5461f-1a52-4996-a497-1e434188e577",
-    "sessionId": "b20b0e13-b5dc-4173-98f5-cb482dfe00d8",
-    "timestamp": "2025-08-21T08:21:29.245Z",
-    "type": "stdout",
-    "terminal_output": "Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-205-generic x86_64)\r\n\r\n * Documentation:  https://help.ubuntu.com\r\n * Management:     https://landscape.canonical.com\r\n * Support:        https://ubuntu.com/pro\r\n\r\n1 device has a firmware upgrade available.\r\nRun `fwupdmgr get-upgrades` for more information.\r\n\r\n\r\nExpanded Security Maintenance for Infrastructure is enabled.\r\n\r\n248 updates can be applied immediately.\r\n97 of these updates are ESM Infra security updates.\r\n39 of these updates are standard security updates.\r\nTo see these additional updates run: apt list --upgradable\r\n\r\nUbuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by\r\napplicable law.\r\n\r\nNew release '22.04.5 LTS' available.\r\nRun 'do-release-upgrade' to upgrade to it.\r\n\r\n\r\n4 updates could not be installed automatically. For more details,\r\nsee /var/log/unattended-upgrades/unattended-upgrades.log\r\n*** System restart required ***\r\nYou have mail.\r\nLast login: Thu Aug 21 11:19:44 2025 from 192.168.1.254\r\r\n~ $ ды -дф\b\b\b\b\b\b\u0007\u0007\u0007\u0007\u0007\u0007фшЖ \b\b\b\bai: lbcr \b\b\b\b\bдиск"
-  },
-  {
-    "id": "11407391-e62b-41e6-bbfd-688eac2ed1e1",
-    "sessionId": "b20b0e13-b5dc-4173-98f5-cb482dfe00d8",
-    "timestamp": "2025-08-21T08:21:29.245Z",
-    "type": "ai_query",
-    "user_ai_query": "диск"
-  },
-  {
-    "id": "a316cf26-1d38-44a5-9cbb-16443084214c",
-    "sessionId": "b20b0e13-b5dc-4173-98f5-cb482dfe00d8",
-    "timestamp": "2025-08-21T08:21:32.170Z",
-    "type": "stdin",
-    "executed_command": "df -h",
-    "user_ai_query": "диск"
-  },
-  {
-    "id": "08cbe5d4-878f-4182-907e-8c01ebe4b815",
-    "sessionId": "b20b0e13-b5dc-4173-98f5-cb482dfe00d8",
-    "timestamp": "2025-08-21T08:22:50.517Z",
-    "type": "stdout",
-    "terminal_output": "\b\b\b\b\b\b\b\b\b\u0007\u0007\u0007\u0007\r\n~ $ df -h\r\nFilesystem      Size  Used Avail Use% Mounted on\r\nudev             62G     0   62G   0% /dev\r\ntmpfs            13G   11M   13G   1% /run\r\n/dev/sdb2       3,3T  2,5T  629G  81% /\r\ntmpfs            62G  1,2M   62G   1% /dev/shm\r\ntmpfs           5,0M     0  5,0M   0% /run/lock\r\ntmpfs            62G     0   62G   0% /sys/fs/cgroup\r\n/dev/loop11     128K  128K     0 100% /snap/bare/5\r\n/dev/loop1       22M   22M     0 100% /snap/bashtop/504\r\n/dev/loop2       22M   22M     0 100% /snap/bashtop/502\r\n/dev/loop13     165M  165M     0 100% /snap/gnome-3-28-1804/194\r\n/dev/loop24      82M   82M     0 100% /snap/gtk-common-themes/1534\r\n/dev/loop17     350M  350M     0 100% /snap/gnome-3-38-2004/140\r\n/dev/loop16     350M  350M     0 100% /snap/gnome-3-38-2004/143\r\n/dev/loop29     1,2G  1,2G     0 100% /snap/stuntrally/169\r\n/dev/loop15     165M  165M     0 100% /snap/gnome-3-28-1804/198\r\n/dev/loop25      92M   92M     0 100% /snap/gtk-common-themes/1535\r\n/dev/loop20     506M  506M     0 100% /snap/gnome-42-2204/176\r\n/dev/loop18     517M  517M     0 100% /snap/gnome-42-2204/202\r\n/dev/loop31     318M  318M     0 100% /snap/trigger-rally-ogra/10\r\n/dev/loop28     943M  943M     0 100% /snap/stuntrally/23\r\n/dev/sde1        13T  9,9T  2,2T  82% /_backup\r\n/dev/sdc1        13T  9,5T  2,6T  80% /_last\r\n/dev/sdd1        13T  1,1M   12T   1% /_new\r\ntmpfs            13G  8,0K   13G   1% /run/user/1002\r\ntmpfs            13G  4,0K   13G   1% /run/user/1000\r\ntmpfs            13G  4,0K   13G   1% /run/user/126\r\n/dev/loop5      405M  405M     0 100% /snap/gnome-46-2404/90\r\n/dev/loop10      69M   69M     0 100% /snap/cups/1085\r\n/dev/loop36      68M   68M     0 100% /snap/cups/1100\r\ntmpfs            13G     0   13G   0% /run/user/0\r\n/dev/loop33      64M   64M     0 100% /snap/core20/2582\r\nunionfs          38T   20T   17T  54% /backup\r\n/dev/loop4       64M   64M     0 100% /snap/core20/2599\r\n/dev/loop9       51M   51M     0 100% /snap/snapd/24718\r\n/dev/loop35      67M   67M     0 100% /snap/core24/1006\r\n/dev/loop3      291M  291M     0 100% /snap/mesa-2404/887\r\n/dev/loop32     590M  590M     0 100% /snap/gnome-46-2404/117\r\n/dev/loop12      74M   74M     0 100% /snap/core22/2045\r\n/dev/loop26      50M   50M     0 100% /snap/snapd/24792\r\n/dev/loop22      67M   67M     0 100% /snap/core24/1055\r\n/dev/loop23      73M   73M     0 100% /snap/snapcraft/15369\r\n/dev/loop34      56M   56M     0 100% /snap/core18/2923\r\n/dev/loop27     185M  185M     0 100% /snap/chromium/3203\r\n/dev/sdh         13T  3,1T  9,0T  26% /x\r\n/dev/loop21      56M   56M     0 100% /snap/core18/2934\r\n/dev/loop14     291M  291M     0 100% /snap/mesa-2404/912\r\n/dev/loop0      184M  184M     0 100% /snap/chromium/3217\r\n/dev/loop6       15M   15M     0 100% /snap/arduino-cli/60\r\n/dev/loop37      15M   15M     0 100% /snap/arduino-cli/62\r\ntmpfs            13G  8,0K   13G   1% /run/user/1001\r\n/dev/loop38      73M   73M     0 100% /snap/snapcraft/15600\r\n/dev/loop30      74M   74M     0 100% /snap/core22/2082\r\n~ $"
-  },
-  {
-    "id": "0713ce7d-0767-41d9-9566-676d488532b3",
-    "sessionId": "999a2fcf-cf38-4a77-b781-aa9bd54ad5d1",
-    "timestamp": "2025-08-21T08:24:59.811Z",
-    "type": "stdout",
-    "terminal_output": "Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-205-generic x86_64)\r\n\r\n * Documentation:  https://help.ubuntu.com\r\n * Management:     https://landscape.canonical.com\r\n * Support:        https://ubuntu.com/pro\r\n\r\n1 device has a firmware upgrade available.\r\nRun `fwupdmgr get-upgrades` for more information.\r\n\r\n\r\nExpanded Security Maintenance for Infrastructure is enabled.\r\n\r\n248 updates can be applied immediately.\r\n97 of these updates are ESM Infra security updates.\r\n39 of these updates are standard security updates.\r\nTo see these additional updates run: apt list --upgradable\r\n\r\nUbuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by\r\napplicable law.\r\n\r\nNew release '22.04.5 LTS' available.\r\nRun 'do-release-upgrade' to upgrade to it.\r\n\r\n\r\n4 updates could not be installed automatically. For more details,\r\nsee /var/log/unattended-upgrades/unattended-upgrades.log\r\n*** System restart required ***\r\nYou have mail.\r\nLast login: Thu Aug 21 11:21:01 2025 from 192.168.1.254\r\r\n~ $ ды -дф\b\b\b\b\b\b\b\b\b\b\u0007\u0007\u0007\u0007\u0007\u0007ls \r\n 00.log\r\n 0.du\r\n 0.jpg\r\n 1\r\n 1030000.txt\r\n 1134.list\r\n 1167455.jpg\r\n 117700.tar\r\n 14\r\n 14.tar\r\n 1669366557165.sql\r\n 1676964076.xml\r\n 1676964076_.xml\r\n 1ald.xls\r\n 1instruction.pdf\r\n 1.jpeg\r\n 1.jpg\r\n 1lep.xlsx\r\n 1qq.log\r\n 1qqq-20240219_lot_upload_15.xls\r\n 1qqq.xls\r\n 2\r\n 2022-04-05-15-10-18.030-VBoxHeadless-2698668.log\r\n 2022-07-14-07-15-00.026-VBoxHeadless-1972878.log\r\n 2022-08-30-12-52-26.035-VBoxHeadless-319374.log\r\n'2023-07-14 загрузочный файл образец.xls'\r\n'2023-07-17 загрузочный файл (1).xls'\r\n'2023-12-12 загрузочный файл.xls'\r\n 2024-02-04-12-13-43.042-VBoxSVC-30591.log\r\n 2024-02-04-12-14-03.087-VBoxHeadless-30658.log\r\n 2024-02-17-10-10-00.074-VBoxSVC-40848.log\r\n 20240219_lot_upload_15.xls\r\n 2024-06-25-15-28-14.075-VBoxSVC-66211.log\r\n 2024-06-25-15-29-13.048-VBoxHeadless-66307.log\r\n 2024-06-28-08-17-50.014-VBoxSVC-63107.log\r\n 2024-06-29-08-57-12.028-VBoxHeadless-97653.log\r\n 2024-09-01-05-08-59.068-VBoxSVC-66470.log\r\n 2024-09-01-05-09-38.049-VBoxHeadless-66571.log\r\n 2024-09-01-05-32-16.024-VBoxSVC-54421.log\r\n 2024-09-01-05-32-16.067-VBoxHeadless-54523.log\r\n 2024-09-04-08-15-28.006-VBoxHeadless-95598.log\r\n 2024-10-22-09-31-37.004-VBoxSVC-2121756.log\r\n 2024-11-23-15-30-45.090-VBoxSVC-62799.log\r\n 2024-11-23-15-31-18.078-VBoxHeadless-62904.log\r\n 20578_73770.tar\r\n 2-LEPEXCEL-2023-Dec-06-1232-11.xls\r\n 2root\r\n 2sample.pdf\r\n 2tmp.tar\r\n 3d\r\n 71677\r\n a-102670.tar\r\n a-102672.tar\r\n a-102673.tar\r\n a-102679.tar\r\n ABC_1636467351463.pdf_\r\n AdvLocate\r\n aldexcel-createauct-2024-07-29.log\r\n ald_v5.xls\r\n ald-vehs-2024-11-07.log\r\n ald-vehs-2025-01-20.log\r\n amo_inspectionsreport-01.10.2021-31.10.2021.xlsx\r\n amo_inspectiontimereport-01.03.2022-31.03.2022.xlsx\r\n amo_inspectiontimereport-01.10.2021-31.10.2021.xlsx\r\n arval-open.tar\r\n arval-ws-2021-06-28.log\r\n ARVALXML-2024-Jun-05-134315-api-request.xml\r\n ARVALXML-2024-Jun-05-134647-api-request.xml\r\n ARVALXML-2024-Oct-23-153558-api-request.xml\r\n arvalxml-createauct-2024-08-14.log\r\n autoexec.sh\r\n back-201.tar\r\n Back-2025-04-22.log\r\n Back-2025-05-22.log\r\n BackData.php\r\n backup\r\n bericar-createauct-2025-05-06.log\r\n bericar-ws-2025-04-18.log\r\n bid-arval-carl-2022-02-28.log\r\n bin\r\n c53e96e5-d301-4207-bcd6-91dd1942cfa5.pdf\r\n CarInspect\r\n carlink_4.jpg\r\n carlink_54.jpg\r\n CarlinkAdm\r\n carlink-app\r\n carlink_dump\r\n carlinkng\r\n CarlinkNG_REM\r\n carlinkng.sql\r\n carlinkweb\r\n carlinng_server_db_backup.20211011.gz\r\n carl_logistic.log\r\n cars\r\n chromium-browser.prod\r\n common-2022-04-06.log\r\n ContestResultList_c665f4ab.docx\r\n ContestResultList_c665f4ab.zip\r\n cool_wf\r\n cron-2025-05-26.log\r\n cron.err\r\n CronJobsHandler.php\r\n crontab.txt\r\n CSV1lCOnE.xlsx\r\n current\r\n current.fueld.backend\r\n current.inspect\r\n current.reactive\r\n current.web\r\n Desktop\r\n dge\r\n dkp_templates.tar\r\n doc2pdf-2023-08-31.log\r\n docker\r\n docs.instructlab.ai\r\n Documents\r\n Downloads\r\n dump.2021-06-23_15_04_39.gz\r\n erv\r\n ERV\r\n examples.desktop\r\n'excelload-ald-2023-Apr-12-1753-!2023-04-12 Vehicle upload (carlink).xls'\r\n'excelload-ald-2023-Apr-19-1137-2023-04-18 загрузочный файл.xls'\r\n'excelload-ald-2023-Dec-04-1401-2023-12-04 загрузочный файл.xls'\r\n'excelload-ald-2023-Jul-17-1146-2023-07-17 загрузочный файл.xls'\r\n excelload-ald-2023-Mar-01-1421-123.xls\r\n'excelload-ald-2023-May-25-1450-2023-05-25 XW8ZZZ61ZKG054881.xls'\r\n'excelload-ald-2023-May-25-1450-2023-05-25 загрузочный файл.xls'\r\n excel-stock.xls\r\n file_id_48__base64.doc\r\n file_id_48__base64___.doc\r\n file_id_6487.base64\r\n firstsync.sh\r\n fods.c\r\n FormM2a_0824ad31.docx\r\n fueldb\r\n fueld_backend.sh\r\n fueldb_dump\r\n fueld_docker\r\n fueld_sockets\r\n get_yandex_city\r\n gitlab\r\n gitlab_bup\r\n grafana-plugins\r\n housedump\r\n import_car_dict_ALL.log\r\n import_car_dict.log\r\n import_carlink_arval\r\n import_carlink_ru\r\n init_carlink.log\r\n inspect_reports_20230904\r\n inspect_reports_20240111\r\n inspect_reports_20240802\r\n install_control.log\r\n install_pgnsi.log\r\n install_statistic.log\r\n ip2ban.sh\r\n IPGeolocation\r\n Irene-Voice-Assistant\r\n Irene-Voice-Assistant.git\r\n jimage\r\n jj\r\n jj.tar\r\n jlog.tar\r\n jparser\r\n lep-2023-07-03.log\r\n LEPEXCEL-2023-Nov-30-1631-ald.xls\r\n LEPEXCEL-2024-Aug-15-1641-lot_upload_20240815_wl_2.xlsx\r\n LEPEXCEL-2024-Oct-09-1620-lot_upload_20241010_wl_1.xlsx\r\n lib.scad\r\n list.tar\r\n list.txt\r\n log\r\n log2.tar\r\n logo.zip\r\n mail\r\n main1-2024-10-03.log\r\n main_bid_request_20240328_wl.xlsx\r\n mbox\r\n monitors\r\n mqtt\r\n Music\r\n'NEW XML Arval auction.xml'\r\n nging-open-count.sh\r\n node_modules\r\n node_modules.tar\r\n NomeroffNet\r\n OpenVpnDocker\r\n owncloud.log\r\n package.json\r\n package-lock.json\r\n parser\r\n patch_1.log\r\n patch_carl_php.log\r\n pdf.xls\r\n pg-2024-07-29.log\r\n pg_background\r\n pgexporter\r\n pgtap\r\n PhpWordSAhrHP\r\n PhpWordSAhrHP.docx\r\n Pictures\r\n poll-748-2021-11-26.log\r\n poll-748-2021-11-29.log\r\n poll-748-2021-11-30.log\r\n PollServer.field\r\n proddbtunnel.sh\r\n prometheus\r\n prometheus_wpl2\r\n promolanding\r\n Public\r\n public_html\r\n pusher_restart.sh\r\n qqq.csv\r\n q.t\r\n reactivedb\r\n reports_20230904\r\n reports_20240111\r\n reports_20240802\r\n reports_20241226\r\n scp1c.sh\r\n screenshot.jpg\r\n sdr\r\n semaphore\r\n sendDepositPlus.mail\r\n silver_eagle_example_edit.xls\r\n SILVEREXCEL-2024-Jul-17-2053-se_test.xls\r\n SILVEREXCEL-2024-Jun-14-1708-se_test.xls\r\n SILVEREXCEL-2024-Oct-27-1357-se_test.xls\r\n snap\r\n ssh.tar\r\n Templates\r\n thinclient_drives\r\n tmp\r\n tmp.dump.gz\r\n t.t\r\n tunnelprod.sh\r\n UserController.2\r\n UserController.php\r\n users.sql\r\n Videos\r\n'VirtualBox VMs'\r\n vosk.log\r\n vrr-a-bot\r\n vrr-a-bot.git\r\n vv\r\n w2_20240527.sql.gz\r\n xmlload-arval-2023-Feb-27-1614-1677503359.xml\r\n xmlload-arval-2023-May-29-1229-1685351984.xml\r\n xmlload-keys.xml\r\n xmload-bmp.xml\r\n XW8AD4NE5HH011016.pdf\r\n XW8ZZZ61ZKG010015.ok\r\n'АЛД_загрузочный файл образец v5.xls'\r\n~ $"
-  },
-  {
-    "id": "9f8b851a-ef55-4b3a-b21e-b5547ed12085",
-    "sessionId": "9da0abd5-808b-4d9c-8ec6-6f9c2f2c9694",
-    "timestamp": "2025-08-21T08:25:46.057Z",
-    "type": "stdout",
-    "terminal_output": "Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-205-generic x86_64)\r\n\r\n * Documentation:  https://help.ubuntu.com\r\n * Management:     https://landscape.canonical.com\r\n * Support:        https://ubuntu.com/pro\r\n\r\n1 device has a firmware upgrade available.\r\nRun `fwupdmgr get-upgrades` for more information.\r\n\r\n\r\nExpanded Security Maintenance for Infrastructure is enabled.\r\n\r\n248 updates can be applied immediately.\r\n97 of these updates are ESM Infra security updates.\r\n39 of these updates are standard security updates.\r\nTo see these additional updates run: apt list --upgradable\r\n\r\nUbuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by\r\napplicable law.\r\n\r\nNew release '22.04.5 LTS' available.\r\nRun 'do-release-upgrade' to upgrade to it.\r\n\r\n\r\n4 updates could not be installed automatically. For more details,\r\nsee /var/log/unattended-upgrades/unattended-upgrades.log\r\n*** System restart required ***\r\nYou have mail.\r\nLast login: Thu Aug 21 11:23:28 2025 from 192.168.1.254\r\r\n~ $ ls\r\n 00.log\r\n 0.du\r\n 0.jpg\r\n 1\r\n 1030000.txt\r\n 1134.list\r\n 1167455.jpg\r\n 117700.tar\r\n 14\r\n 14.tar\r\n 1669366557165.sql\r\n 1676964076.xml\r\n 1676964076_.xml\r\n 1ald.xls\r\n 1instruction.pdf\r\n 1.jpeg\r\n 1.jpg\r\n 1lep.xlsx\r\n 1qq.log\r\n 1qqq-20240219_lot_upload_15.xls\r\n 1qqq.xls\r\n 2\r\n 2022-04-05-15-10-18.030-VBoxHeadless-2698668.log\r\n 2022-07-14-07-15-00.026-VBoxHeadless-1972878.log\r\n 2022-08-30-12-52-26.035-VBoxHeadless-319374.log\r\n'2023-07-14 загрузочный файл образец.xls'\r\n'2023-07-17 загрузочный файл (1).xls'\r\n'2023-12-12 загрузочный файл.xls'\r\n 2024-02-04-12-13-43.042-VBoxSVC-30591.log\r\n 2024-02-04-12-14-03.087-VBoxHeadless-30658.log\r\n 2024-02-17-10-10-00.074-VBoxSVC-40848.log\r\n 20240219_lot_upload_15.xls\r\n 2024-06-25-15-28-14.075-VBoxSVC-66211.log\r\n 2024-06-25-15-29-13.048-VBoxHeadless-66307.log\r\n 2024-06-28-08-17-50.014-VBoxSVC-63107.log\r\n 2024-06-29-08-57-12.028-VBoxHeadless-97653.log\r\n 2024-09-01-05-08-59.068-VBoxSVC-66470.log\r\n 2024-09-01-05-09-38.049-VBoxHeadless-66571.log\r\n 2024-09-01-05-32-16.024-VBoxSVC-54421.log\r\n 2024-09-01-05-32-16.067-VBoxHeadless-54523.log\r\n 2024-09-04-08-15-28.006-VBoxHeadless-95598.log\r\n 2024-10-22-09-31-37.004-VBoxSVC-2121756.log\r\n 2024-11-23-15-30-45.090-VBoxSVC-62799.log\r\n 2024-11-23-15-31-18.078-VBoxHeadless-62904.log\r\n 20578_73770.tar\r\n 2-LEPEXCEL-2023-Dec-06-1232-11.xls\r\n 2root\r\n 2sample.pdf\r\n 2tmp.tar\r\n 3d\r\n 71677\r\n a-102670.tar\r\n a-102672.tar\r\n a-102673.tar\r\n a-102679.tar\r\n ABC_1636467351463.pdf_\r\n AdvLocate\r\n aldexcel-createauct-2024-07-29.log\r\n ald_v5.xls\r\n ald-vehs-2024-11-07.log\r\n ald-vehs-2025-01-20.log\r\n amo_inspectionsreport-01.10.2021-31.10.2021.xlsx\r\n amo_inspectiontimereport-01.03.2022-31.03.2022.xlsx\r\n amo_inspectiontimereport-01.10.2021-31.10.2021.xlsx\r\n arval-open.tar\r\n arval-ws-2021-06-28.log\r\n ARVALXML-2024-Jun-05-134315-api-request.xml\r\n ARVALXML-2024-Jun-05-134647-api-request.xml\r\n ARVALXML-2024-Oct-23-153558-api-request.xml\r\n arvalxml-createauct-2024-08-14.log\r\n autoexec.sh\r\n back-201.tar\r\n Back-2025-04-22.log\r\n Back-2025-05-22.log\r\n BackData.php\r\n backup\r\n bericar-createauct-2025-05-06.log\r\n bericar-ws-2025-04-18.log\r\n bid-arval-carl-2022-02-28.log\r\n bin\r\n c53e96e5-d301-4207-bcd6-91dd1942cfa5.pdf\r\n CarInspect\r\n carlink_4.jpg\r\n carlink_54.jpg\r\n CarlinkAdm\r\n carlink-app\r\n carlink_dump\r\n carlinkng\r\n CarlinkNG_REM\r\n carlinkng.sql\r\n carlinkweb\r\n carlinng_server_db_backup.20211011.gz\r\n carl_logistic.log\r\n cars\r\n chromium-browser.prod\r\n common-2022-04-06.log\r\n ContestResultList_c665f4ab.docx\r\n ContestResultList_c665f4ab.zip\r\n cool_wf\r\n cron-2025-05-26.log\r\n cron.err\r\n CronJobsHandler.php\r\n crontab.txt\r\n CSV1lCOnE.xlsx\r\n current\r\n current.fueld.backend\r\n current.inspect\r\n current.reactive\r\n current.web\r\n Desktop\r\n dge\r\n dkp_templates.tar\r\n doc2pdf-2023-08-31.log\r\n docker\r\n docs.instructlab.ai\r\n Documents\r\n Downloads\r\n dump.2021-06-23_15_04_39.gz\r\n erv\r\n ERV\r\n examples.desktop\r\n'excelload-ald-2023-Apr-12-1753-!2023-04-12 Vehicle upload (carlink).xls'\r\n'excelload-ald-2023-Apr-19-1137-2023-04-18 загрузочный файл.xls'\r\n'excelload-ald-2023-Dec-04-1401-2023-12-04 загрузочный файл.xls'\r\n'excelload-ald-2023-Jul-17-1146-2023-07-17 загрузочный файл.xls'\r\n excelload-ald-2023-Mar-01-1421-123.xls\r\n'excelload-ald-2023-May-25-1450-2023-05-25 XW8ZZZ61ZKG054881.xls'\r\n'excelload-ald-2023-May-25-1450-2023-05-25 загрузочный файл.xls'\r\n excel-stock.xls\r\n file_id_48__base64.doc\r\n file_id_48__base64___.doc\r\n file_id_6487.base64\r\n firstsync.sh\r\n fods.c\r\n FormM2a_0824ad31.docx\r\n fueldb\r\n fueld_backend.sh\r\n fueldb_dump\r\n fueld_docker\r\n fueld_sockets\r\n get_yandex_city\r\n gitlab\r\n gitlab_bup\r\n grafana-plugins\r\n housedump\r\n import_car_dict_ALL.log\r\n import_car_dict.log\r\n import_carlink_arval\r\n import_carlink_ru\r\n init_carlink.log\r\n inspect_reports_20230904\r\n inspect_reports_20240111\r\n inspect_reports_20240802\r\n install_control.log\r\n install_pgnsi.log\r\n install_statistic.log\r\n ip2ban.sh\r\n IPGeolocation\r\n Irene-Voice-Assistant\r\n Irene-Voice-Assistant.git\r\n jimage\r\n jj\r\n jj.tar\r\n jlog.tar\r\n jparser\r\n lep-2023-07-03.log\r\n LEPEXCEL-2023-Nov-30-1631-ald.xls\r\n LEPEXCEL-2024-Aug-15-1641-lot_upload_20240815_wl_2.xlsx\r\n LEPEXCEL-2024-Oct-09-1620-lot_upload_20241010_wl_1.xlsx\r\n lib.scad\r\n list.tar\r\n list.txt\r\n log\r\n log2.tar\r\n logo.zip\r\n mail\r\n main1-2024-10-03.log\r\n main_bid_request_20240328_wl.xlsx\r\n mbox\r\n monitors\r\n mqtt\r\n Music\r\n'NEW XML Arval auction.xml'\r\n nging-open-count.sh\r\n node_modules\r\n node_modules.tar\r\n NomeroffNet\r\n OpenVpnDocker\r\n owncloud.log\r\n package.json\r\n package-lock.json\r\n parser\r\n patch_1.log\r\n patch_carl_php.log\r\n pdf.xls\r\n pg-2024-07-29.log\r\n pg_background\r\n pgexporter\r\n pgtap\r\n PhpWordSAhrHP\r\n PhpWordSAhrHP.docx\r\n Pictures\r\n poll-748-2021-11-26.log\r\n poll-748-2021-11-29.log\r\n poll-748-2021-11-30.log\r\n PollServer.field\r\n proddbtunnel.sh\r\n prometheus\r\n prometheus_wpl2\r\n promolanding\r\n Public\r\n public_html\r\n pusher_restart.sh\r\n qqq.csv\r\n q.t\r\n reactivedb\r\n reports_20230904\r\n reports_20240111\r\n reports_20240802\r\n reports_20241226\r\n scp1c.sh\r\n screenshot.jpg\r\n sdr\r\n semaphore\r\n sendDepositPlus.mail\r\n silver_eagle_example_edit.xls\r\n SILVEREXCEL-2024-Jul-17-2053-se_test.xls\r\n SILVEREXCEL-2024-Jun-14-1708-se_test.xls\r\n SILVEREXCEL-2024-Oct-27-1357-se_test.xls\r\n snap\r\n ssh.tar\r\n Templates\r\n thinclient_drives\r\n tmp\r\n tmp.dump.gz\r\n t.t\r\n tunnelprod.sh\r\n UserController.2\r\n UserController.php\r\n users.sql\r\n Videos\r\n'VirtualBox VMs'\r\n vosk.log\r\n vrr-a-bot\r\n vrr-a-bot.git\r\n vv\r\n w2_20240527.sql.gz\r\n xmlload-arval-2023-Feb-27-1614-1677503359.xml\r\n xmlload-arval-2023-May-29-1229-1685351984.xml\r\n xmlload-keys.xml\r\n xmload-bmp.xml\r\n XW8AD4NE5HH011016.pdf\r\n XW8ZZZ61ZKG010015.ok\r\n'АЛД_загрузочный файл образец v5.xls'\r\n~ $ ai: lbcr \b\b\b\b\bдиск"
-  },
-  {
-    "id": "33de2d5a-cda1-4594-bf3c-bf642476fe9f",
-    "sessionId": "9da0abd5-808b-4d9c-8ec6-6f9c2f2c9694",
-    "timestamp": "2025-08-21T08:25:46.057Z",
-    "type": "ai_query",
-    "user_ai_query": "диск"
-  },
-  {
-    "id": "2d8eeaf3-21d0-41d3-a554-a5fbd4720e34",
-    "sessionId": "9da0abd5-808b-4d9c-8ec6-6f9c2f2c9694",
-    "timestamp": "2025-08-21T08:25:51.416Z",
-    "type": "stdin",
-    "executed_command": "df -h",
-    "user_ai_query": "диск"
+    "terminal_output": "df -h\r\n\rFilesystem      Size  Used Avail Use% Mounted on\r\ntmpfs           197M  1.6M  196M   1% /run\r\nefivarfs        256K   43K  209K  17% /sys/firmware/efi/efivars\r\n/dev/sda3       492G  8.2G  458G   2% /\r\ntmpfs           984M     0  984M   0% /dev/shm\r\ntmpfs           5.0M     0  5.0M   0% /run/lock\r\n/dev/sda1       537M  6.2M  531M   2% /boot/efi\r\noverlay         492G  8.2G  458G   2% /var/lib/docker/overlay2/0a4fee7bad87c9538fbaba40d20bbdc3dc4ef8e98b17fffd00189f4a8901e932/merged\r\noverlay         492G  8.2G  458G   2% /var/lib/docker/overlay2/6e92cf2822bf953c96d5a3e62ba61ce9b8c1b952e393af54e3ea8f828acad80a/merged\r\noverlay         492G  8.2G  458G   2% /var/lib/docker/overlay2/5503baa5ac9905d75ba6fbb194697780f1f660b2ee137861ff8671b0b152cfe3/merged\r\ntmpfs           197M   12K  197M   1% /run/user/0\r\noverlay         492G  8.2G  458G   2% /var/lib/docker/overlay2/e1c2ef0eba2a84b30f3fbad889ecf4255802a456639fc7dfb65899468b08b60c/merged\r\n\u001b]0;root@ubuntu24: ~\u0007root@ubuntu24:~#"
   }
 ]
