@@ -321,5 +321,194 @@
     "serverName": "usa",
     "serverHost": "usa",
     "stdin_id": "fb902fc8-48fb-42c7-9dfb-8b72fa6005c9"
+  },
+  {
+    "id": "7394ac2c-cfc5-410e-a458-ef423e9b5edf",
+    "sessionId": "14855bda-c82a-4049-ad2b-913ea993c871",
+    "timestamp": "2025-08-26T10:38:55.476Z",
+    "type": "stdin",
+    "executed_command": "git add . && git commit -m \"после разрешения конфликта\"",
+    "serverId": "usa",
+    "serverName": "usa",
+    "serverHost": "usa"
+  },
+  {
+    "id": "102929b7-fb9b-49dd-8952-85d5eb7c4a7f",
+    "sessionId": "14855bda-c82a-4049-ad2b-913ea993c871",
+    "timestamp": "2025-08-26T10:38:55.643Z",
+    "type": "stdout",
+    "terminal_output": "git add . && git commit -m \"после разрешения конфликта\"\rgit add . && git commit -m \"после разрешения конфликта\"\r\n\r[main 2d98573] после разрешения конфликта\r\n 6 files changed, 985 insertions(+)\r\n create mode 100644 inventory.json.backup.1755584837904\r\n create mode 100644 inventory.json.backup.1755584949070\r\n create mode 100644 inventory.json.backup.1756192474771\r\n create mode 100644 terminal_log.json.backup\r\n create mode 100644 terminal_log_copy.json",
+    "serverId": "usa",
+    "serverName": "usa",
+    "serverHost": "usa",
+    "stdin_id": "7394ac2c-cfc5-410e-a458-ef423e9b5edf"
+  },
+  {
+    "id": "a9281d57-d26f-4281-9804-beeb79e36d5f",
+    "sessionId": "14855bda-c82a-4049-ad2b-913ea993c871",
+    "timestamp": "2025-08-26T10:38:59.244Z",
+    "type": "stdin",
+    "executed_command": "git status",
+    "serverId": "usa",
+    "serverName": "usa",
+    "serverHost": "usa"
+  },
+  {
+    "id": "7b42e7fa-30b4-46a7-b53f-ee321c3d5c61",
+    "sessionId": "14855bda-c82a-4049-ad2b-913ea993c871",
+    "timestamp": "2025-08-26T10:38:59.261Z",
+    "type": "stdout",
+    "terminal_output": "git add . && git commit -m \"после разрешения конфликта\"\rstatus \r\n\rOn branch main\r\nYour branch and 'origin/main' have diverged,\r\nand have 2 and 3 different commits each, respectively.\r\n  (use \"git pull\" if you want to integrate the remote branch with yours)\r\n\r\nChanges not staged for commit:\r\n  (use \"git add <file>...\" to update what will be committed)\r\n  (use \"git restore <file>...\" to discard changes in working directory)\r\n\tmodified:   terminal_log.json\r\n\r\nno changes added to commit (use \"git add\" and/or \"git commit -a\")",
+    "serverId": "usa",
+    "serverName": "usa",
+    "serverHost": "usa",
+    "stdin_id": "a9281d57-d26f-4281-9804-beeb79e36d5f"
+  },
+  {
+    "id": "ee299146-d07f-407b-92b1-e3b686b2f3c2",
+    "sessionId": "14855bda-c82a-4049-ad2b-913ea993c871",
+    "timestamp": "2025-08-26T10:39:04.705Z",
+    "type": "stdin",
+    "executed_command": "git pull",
+    "serverId": "usa",
+    "serverName": "usa",
+    "serverHost": "usa"
+  },
+  {
+    "id": "d1d2e280-25cc-4d9f-bec2-22be35dcad73",
+    "sessionId": "14855bda-c82a-4049-ad2b-913ea993c871",
+    "timestamp": "2025-08-26T10:39:05.960Z",
+    "type": "stdout",
+    "terminal_output": "git pull\r\n\rerror: Your local changes to the following files would be overwritten by merge:\r\n\tterminal_log.json\r\nPlease commit your changes or stash them before you merge.\r\nAborting\r\nMerge with strategy ort failed.",
+    "serverId": "usa",
+    "serverName": "usa",
+    "serverHost": "usa",
+    "stdin_id": "ee299146-d07f-407b-92b1-e3b686b2f3c2"
+  },
+  {
+    "id": "3dcc47db-5a13-4c7f-b9a5-3455bd439839",
+    "sessionId": "14855bda-c82a-4049-ad2b-913ea993c871",
+    "timestamp": "2025-08-26T10:39:22.792Z",
+    "type": "stdin",
+    "executed_command": "git status",
+    "serverId": "usa",
+    "serverName": "usa",
+    "serverHost": "usa"
+  },
+  {
+    "id": "3063f171-28af-430b-a484-d856c773d1a5",
+    "sessionId": "14855bda-c82a-4049-ad2b-913ea993c871",
+    "timestamp": "2025-08-26T10:39:22.825Z",
+    "type": "stdout",
+    "terminal_output": "git pull\b\b\b\bstatus \r\n\rOn branch main\r\nYour branch and 'origin/main' have diverged,\r\nand have 2 and 3 different commits each, respectively.\r\n  (use \"git pull\" if you want to integrate the remote branch with yours)\r\n\r\nChanges not staged for commit:\r\n  (use \"git add <file>...\" to update what will be committed)\r\n  (use \"git restore <file>...\" to discard changes in working directory)\r\n\tmodified:   terminal_log.json\r\n\r\nno changes added to commit (use \"git add\" and/or \"git commit -a\")",
+    "serverId": "usa",
+    "serverName": "usa",
+    "serverHost": "usa",
+    "stdin_id": "3dcc47db-5a13-4c7f-b9a5-3455bd439839"
+  },
+  {
+    "id": "2e704596-b449-4642-8517-79227b24249f",
+    "sessionId": "14855bda-c82a-4049-ad2b-913ea993c871",
+    "timestamp": "2025-08-26T10:39:36.148Z",
+    "type": "stdin",
+    "executed_command": "git checkout -- .",
+    "serverId": "usa",
+    "serverName": "usa",
+    "serverHost": "usa"
+  },
+  {
+    "id": "73a0564c-5216-42c4-a7f4-281d8e118254",
+    "sessionId": "14855bda-c82a-4049-ad2b-913ea993c871",
+    "timestamp": "2025-08-26T10:39:36.177Z",
+    "type": "stdout",
+    "terminal_output": "git ch\u0007eckout -- .",
+    "serverId": "usa",
+    "serverName": "usa",
+    "serverHost": "usa",
+    "stdin_id": "2e704596-b449-4642-8517-79227b24249f"
+  },
+  {
+    "id": "1bd3226e-2d22-4e51-a48c-3260f52e9ed3",
+    "sessionId": "14855bda-c82a-4049-ad2b-913ea993c871",
+    "timestamp": "2025-08-26T10:39:40.117Z",
+    "type": "stdin",
+    "executed_command": "git pull",
+    "serverId": "usa",
+    "serverName": "usa",
+    "serverHost": "usa"
+  },
+  {
+    "id": "62f94b8a-5add-4248-b64e-8140ef6f584d",
+    "sessionId": "14855bda-c82a-4049-ad2b-913ea993c871",
+    "timestamp": "2025-08-26T10:39:41.281Z",
+    "type": "stdout",
+    "terminal_output": "git pull\r\n\rerror: Your local changes to the following files would be overwritten by merge:\r\n\tterminal_log.json\r\nPlease commit your changes or stash them before you merge.\r\nAborting\r\nMerge with strategy ort failed.",
+    "serverId": "usa",
+    "serverName": "usa",
+    "serverHost": "usa",
+    "stdin_id": "1bd3226e-2d22-4e51-a48c-3260f52e9ed3"
+  },
+  {
+    "id": "c2b66107-4553-44b7-94e8-88668a574be6",
+    "sessionId": "14855bda-c82a-4049-ad2b-913ea993c871",
+    "timestamp": "2025-08-26T10:39:52.677Z",
+    "type": "stdin",
+    "executed_command": "git status",
+    "serverId": "usa",
+    "serverName": "usa",
+    "serverHost": "usa"
+  },
+  {
+    "id": "fc744059-057a-442b-b483-ebddff9fa18f",
+    "sessionId": "14855bda-c82a-4049-ad2b-913ea993c871",
+    "timestamp": "2025-08-26T10:39:52.699Z",
+    "type": "stdout",
+    "terminal_output": "git status \r\n\rOn branch main\r\nYour branch and 'origin/main' have diverged,\r\nand have 2 and 3 different commits each, respectively.\r\n  (use \"git pull\" if you want to integrate the remote branch with yours)\r\n\r\nChanges not staged for commit:\r\n  (use \"git add <file>...\" to update what will be committed)\r\n  (use \"git restore <file>...\" to discard changes in working directory)\r\n\tmodified:   terminal_log.json\r\n\r\nno changes added to commit (use \"git add\" and/or \"git commit -a\")",
+    "serverId": "usa",
+    "serverName": "usa",
+    "serverHost": "usa",
+    "stdin_id": "c2b66107-4553-44b7-94e8-88668a574be6"
+  },
+  {
+    "id": "97f40861-348c-4372-bef6-e1706a165990",
+    "sessionId": "14855bda-c82a-4049-ad2b-913ea993c871",
+    "timestamp": "2025-08-26T10:40:06.115Z",
+    "type": "stdin",
+    "executed_command": "git restore terminal_log.json",
+    "serverId": "usa",
+    "serverName": "usa",
+    "serverHost": "usa"
+  },
+  {
+    "id": "0a550421-6b34-4b2d-beb0-b0ba90439485",
+    "sessionId": "14855bda-c82a-4049-ad2b-913ea993c871",
+    "timestamp": "2025-08-26T10:40:06.134Z",
+    "type": "stdout",
+    "terminal_output": "git restore terminal_log.json",
+    "serverId": "usa",
+    "serverName": "usa",
+    "serverHost": "usa",
+    "stdin_id": "97f40861-348c-4372-bef6-e1706a165990"
+  },
+  {
+    "id": "75ef3679-d1e8-47fa-99b4-c21199c8d9af",
+    "sessionId": "14855bda-c82a-4049-ad2b-913ea993c871",
+    "timestamp": "2025-08-26T10:40:09.006Z",
+    "type": "stdin",
+    "executed_command": "git status",
+    "serverId": "usa",
+    "serverName": "usa",
+    "serverHost": "usa"
+  },
+  {
+    "id": "88a425a3-67f1-429b-8776-d9c80e536b7f",
+    "sessionId": "14855bda-c82a-4049-ad2b-913ea993c871",
+    "timestamp": "2025-08-26T10:40:09.031Z",
+    "type": "stdout",
+    "terminal_output": "git restore terminal_log.json \b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\bstatus \r\n\rOn branch main\r\nYour branch and 'origin/main' have diverged,\r\nand have 2 and 3 different commits each, respectively.\r\n  (use \"git pull\" if you want to integrate the remote branch with yours)\r\n\r\nChanges not staged for commit:\r\n  (use \"git add <file>...\" to update what will be committed)\r\n  (use \"git restore <file>...\" to discard changes in working directory)\r\n\tmodified:   terminal_log.json\r\n\r\nno changes added to commit (use \"git add\" and/or \"git commit -a\")",
+    "serverId": "usa",
+    "serverName": "usa",
+    "serverHost": "usa",
+    "stdin_id": "75ef3679-d1e8-47fa-99b4-c21199c8d9af"
   }
 ]
